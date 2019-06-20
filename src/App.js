@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import './App.scss';
 import InfiniteScroll from 'react-infinite-scroller';
 import Navbar from './Navbar';
+import SearchBar from './SearchBar';
 
 class App extends React.Component{
     state={
@@ -33,10 +34,12 @@ class App extends React.Component{
       this.state.scorecards.push({class: "dawg", key: i})
     }
     return (
-      <div>
-        <Navbar />
-        <div className="App">
-          <InfiniteScroll pageStart={0} loadMore={this.loadFunc} hasMore={this.state.moar} 
+      <div className="app-container">
+        <div className="landing-page">
+          <Navbar />
+          <SearchBar />
+        </div>
+        <InfiniteScroll pageStart={0} loadMore={this.loadFunc} hasMore={this.state.moar} 
           loader={<div className="loader-wheel" key={0}>
               <i><i><i><i><i><i><i><i><i><i><i><i>
               </i></i></i></i></i></i></i></i></i></i></i></i>
@@ -54,9 +57,8 @@ class App extends React.Component{
                       </div>
                     </div>)
             })}
-          </InfiniteScroll>
+        </InfiniteScroll>
       </div>
-    </div>
     )
   }
 

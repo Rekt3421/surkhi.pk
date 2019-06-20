@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './App.scss';
 import SurkhiLogo from './assets/images/surkhi-meter-nav.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFacebook, faInstagram, faTwitter, faFacebookF } from '@fortawesome/free-brands-svg-icons'
+import { faInstagram, faTwitter, faFacebookF } from '@fortawesome/free-brands-svg-icons'
 
 class Navbar extends Component {
     render(){
@@ -15,7 +15,7 @@ class Navbar extends Component {
                     </button>
                     <div className="collapse navbar-collapse" id="inside-nav">
                         <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-                            <li className="nav-item active">
+                            <li className="nav-item">
                                 <a className="nav-link" href="/about">About</a>
                             </li>
                             <li className="nav-item">
