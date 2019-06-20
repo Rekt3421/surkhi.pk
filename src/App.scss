@@ -1,0 +1,235 @@
+.App {
+	padding: 40px 40px;
+}
+
+.dawg {
+	max-width: 716.36px;
+	height: 187.33px;
+	border: 0 0 0 3px #eaeaea;
+	margin: 0 0 1.5em;
+	padding: 1em;
+	box-shadow: 0 0 0 3px #f3f3f3;
+	background: #ffffff;
+}
+
+.board {
+	width: 456.36px;
+	height: 174.261px;
+	padding: 0px 190px 0px 100px ;
+}
+
+.truth {
+	float:right;
+	width: 140px;
+	height: 153.352px;
+	margin: -10px -160px 0px 0px;
+}
+
+.body {
+	width: 456.36px;
+	height: 174.261px;
+}
+
+.pic {
+	margin: 3px 0px 0px -100px;
+	width: 80px;
+	height: 86.364px;
+}
+
+.topic {
+	margin: -80px 0px 0px 0px;
+	width: 456.36px;
+	height: 23.636px;
+	color: #B42628;
+	text-align: justify;
+	font-family: Arial;
+	font-size: 22px;
+	color: #B42628;
+	font-weight: bold;
+	line-height: 10px;
+}
+
+.headline{
+	width: 456.36px;
+	height: 118.182px;
+	margin: 0px 0px 0px 0px;
+	line-height: 25px;
+	font-family: Arial;
+	text-align: justify;
+}
+
+.loader-wheel {
+  font-size: 50px; /* change size here */
+  position: relative;
+  height: 1em;
+  width: 1em;
+  padding-left: 0.45em;
+  overflow: hidden;
+  margin: 0 auto;
+  animation: loader-wheel-rotate 0.5s steps(12) infinite;
+}
+
+.loader-wheel i {
+  display: block;
+  position: absolute;
+  height: 0.3em;
+  width: 0.1em;
+  border-radius: 0.05em;
+  background: #333; /* change color here */
+  opacity: 0.8;
+  transform: rotate(-30deg);
+  transform-origin: center 0.5em;
+}
+
+@keyframes loader-wheel-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+.header-style{
+    background-color: #EDE2E2;
+}
+#inside-nav{
+    height:60px !important;
+}
+
+.nav-link{
+    font-weight:500;
+}
+.nav-item{
+
+    padding: 0px 12px;
+    &:after{
+        content: '';
+        width: 0px;
+        height: 1px;
+        display: block;
+        background: crimson;
+        transition: 300ms;
+    }
+    &:hover:after{
+        width:100%;
+        
+    }
+    .nav-link:hover{
+        color:crimson;
+    }
+}
+
+
+.navbar{
+    padding: 10px 40px !important;
+}
+
+$surkhi: #CC0000;
+$color-snow: #e5e5e5;
+
+@mixin transition($args...) { 
+    -webkit-transition: $args; 
+    -moz-transition: $args; 
+    -ms-transition: $args; 
+    -o-transition: $args; 
+    transition: $args; 
+} 
+
+.delayone {
+-moz-animation-delay: .2s;
+-webkit-animation-delay: .2s;
+}
+.delaytwo {
+-moz-animation-delay: .4s;
+-webkit-animation-delay: .4s;
+}
+.delaythree {
+-moz-animation-delay: .6s;
+-webkit-animation-delay: .6s;
+}
+
+.icon {
+    position: absolute;
+    width: 100%;
+    display: block;
+    color: $surkhi;
+    margin: 5% auto;
+    font-size: 2em;
+    @include transition(all .2s cubic-bezier(1, 0.82, 0.165, 4));
+    
+}
+#circ {
+    max-width: 100%;
+    margin: 0 2%;
+    float: right;
+    align-items: center;
+    ul {
+        list-style: none;
+        padding: 0;
+        width: 100%;
+        margin: 0px !important;
+        li {
+            display: inline-block;
+            border-radius: 50%;
+            overflow: hidden;
+            width: 55px;
+            height: 55px;
+            margin: 0px 15px;
+            text-align: center;
+            background: $color-snow;
+            position: relative;
+            @include transition(all .5s);
+            &:hover {
+                background: #cccccc;
+                cursor: pointer;
+                i{
+                    color: #fa5c5c;
+                }
+            }
+        }
+    } 
+}
+
+@media only screen and(max-width: 1200px) {
+    h1 {
+        font-size: 4em;
+    }
+    .icon {
+        position: relative;
+        color: $surkhi;
+        margin: 10% auto;
+        font-size: 2em;
+        @include transition(all .2s cubic-bezier(0.645, 0.045, 0.355, 1));
+    }
+    #circ {
+        ul {
+            li {
+                width: 80px;
+                height: 80px;
+                margin: 0 5px 5px 5px;
+                &:hover {
+                    background: #cccccc;
+                    cursor: pointer;
+                    i{
+                        color: #fa5c5c;
+                    }
+                }
+            }
+        }
+    }
+}
+@media only screen and(max-width: 690px) {
+    h1 {
+        font-size: 2em;
+    }
+    #circ {
+        ul {
+            li {
+                border-radius: 0;
+                border: none;
+                margin: 0;
+                &:hover {
+                    border: none;
+                }
+            }
+        }
+    }
+}

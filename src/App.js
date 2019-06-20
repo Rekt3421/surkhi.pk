@@ -1,8 +1,9 @@
 import React from 'react';
 import F from './F.png'
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 import InfiniteScroll from 'react-infinite-scroller';
+import Navbar from './Navbar';
 
 class App extends React.Component{
     state={
@@ -32,26 +33,29 @@ class App extends React.Component{
       this.state.scorecards.push({class: "dawg", key: i})
     }
     return (
-      <div className="App">
-        <InfiniteScroll pageStart={0} loadMore={this.loadFunc} hasMore={this.state.moar} 
-        loader={<div className="loader-wheel" key={0}>
-            <i><i><i><i><i><i><i><i><i><i><i><i>
-            </i></i></i></i></i></i></i></i></i></i></i></i>
-          </div> }>
+      <div>
+        <Navbar />
+        <div className="App">
+          <InfiniteScroll pageStart={0} loadMore={this.loadFunc} hasMore={this.state.moar} 
+          loader={<div className="loader-wheel" key={0}>
+              <i><i><i><i><i><i><i><i><i><i><i><i>
+              </i></i></i></i></i></i></i></i></i></i></i></i>
+            </div> }>
 
-          {this.state.scorecards.map(card=>{
-            return(<div className={card.class} key={card.key}>
-                    <div className="board">
-                      <div className="truth"><img src={logo} width="120" height="120" alt=""/></div>
-                      <div className="body">
-                        <div className="pic"><img src={F} width="80" height="80" alt=""/></div>
-                        <div className="topic">Sup</div>
-                        <div className="headline">YAW YAW YAW YAW YAW YAW YAW YAW YAW YAW YAW YAW YAW YAW YAW YAW YAW YAW YAW</div>
+            {this.state.scorecards.map(card=>{
+              return(<div className={card.class} key={card.key}>
+                      <div className="board">
+                        <div className="truth"><img src={logo} width="120" height="120" alt=""/></div>
+                        <div className="body">
+                          <div className="pic"><img src={F} width="80" height="80" alt=""/></div>
+                          <div className="topic">Sup</div>
+                          <div className="headline">YAW YAW YAW YAW YAW YAW YAW YAW YAW YAW YAW YAW YAW YAW YAW YAW YAW YAW YAW</div>
+                        </div>
                       </div>
-                    </div>
-                  </div>)
-          })}
-        </InfiniteScroll>
+                    </div>)
+            })}
+          </InfiniteScroll>
+      </div>
     </div>
     )
   }
