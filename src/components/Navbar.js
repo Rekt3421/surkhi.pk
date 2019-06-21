@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import './App.scss';
-import SurkhiLogo from './assets/images/surkhi-meter-nav.png'
+import '../App.scss';
+import SurkhiLogo from '../assets/images/surkhi-meter-nav.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInstagram, faTwitter, faFacebookF } from '@fortawesome/free-brands-svg-icons'
 

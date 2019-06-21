@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import SurkhiBigImage from './assets/images/surkhi-meter.png';
-import './App.scss';
+import SurkhiBigImage from '../assets/images/surkhi-meter.png';
+import '../App.scss';
 import $ from 'jquery';
 
 class SearchBar extends Component{

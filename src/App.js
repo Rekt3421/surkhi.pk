@@ -3,8 +3,8 @@ import F from './F.png'
 import logo from './logo.svg';
 import './App.scss';
 import InfiniteScroll from 'react-infinite-scroller';
-import Navbar from './Navbar';
-import SearchBar from './SearchBar';
+import Navbar from './components/Navbar';
+import SearchBar from './components/SearchBar';
 
 class App extends React.Component{
     state={
