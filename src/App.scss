@@ -90,8 +90,8 @@
 }
 
 @keyframes loader-wheel-rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 .landing-page{
@@ -147,16 +147,16 @@ $color-snow: #e5e5e5;
 } 
 
 .delayone {
--moz-animation-delay: .2s;
--webkit-animation-delay: .2s;
+    -moz-animation-delay: .2s;
+    -webkit-animation-delay: .2s;
 }
 .delaytwo {
--moz-animation-delay: .4s;
--webkit-animation-delay: .4s;
+    -moz-animation-delay: .4s;
+    -webkit-animation-delay: .4s;
 }
 .delaythree {
--moz-animation-delay: .6s;
--webkit-animation-delay: .6s;
+    -moz-animation-delay: .6s;
+    -webkit-animation-delay: .6s;
 }
 
 .icon {
