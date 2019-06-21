@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import SurkhiBigImage from './assets/images/surkhi-meter.png';
-import './App.scss';
+import SurkhiBigImage from '../assets/images/surkhi-meter.png';
+import '../App.scss';
 import $ from 'jquery';
 
 class SearchBar extends Component{
@@ -9,7 +9,7 @@ class SearchBar extends Component{
         console.log(url);
         this.fetchNewsAuthenticity(url);
     }
-    effect = () => {
+    useEffect = () => {
         $(document).ready(function() {
             $(".search").click(function() {
                 $(".search").addClass("active");
@@ -47,7 +47,7 @@ class SearchBar extends Component{
                     <div className="img-container">
                         <img src={SurkhiBigImage} alt="Surkhi Big Logo" />
                     </div>
-                    <div className="search-section" onClick={this.effect}>
+                    <div className="search-section" onClick={this.useEffect}>
                         <input type="text" className="search" onKeyDown={this.keyDownHandler}/>
                         <div className="line-1"></div>
                         <div className="line-2"></div>

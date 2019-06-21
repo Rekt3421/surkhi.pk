@@ -3,8 +3,9 @@ import F from './F.png'
 import logo from './logo.svg';
 import './App.scss';
 import InfiniteScroll from 'react-infinite-scroller';
-import Navbar from './Navbar';
-import SearchBar from './SearchBar';
+import Navbar from './components/Navbar';
+import SearchBar from './components/SearchBar';
+import Posts from './components/Posts';
 
 class App extends React.Component{
     state={
@@ -31,8 +32,12 @@ class App extends React.Component{
         break
       }
       console.log(i)
-      this.state.scorecards.push({class: "dawg", key: i})
+      this.state.scorecards.push({class: "individual-post", key: i})
     }
+    // let posts = <Posts 
+    //   posts={this.state.scorecards}
+    //   key = {card.key}
+    // />
     return (
       <div className="app-container">
         <div className="landing-page">
@@ -40,22 +45,28 @@ class App extends React.Component{
           <SearchBar />
         </div>
         <InfiniteScroll pageStart={0} loadMore={this.loadFunc} hasMore={this.state.moar} 
-          loader={<div className="loader-wheel" key={0}>
+          loader = {<div className="loader-wheel" key={0}>
               <i><i><i><i><i><i><i><i><i><i><i><i>
               </i></i></i></i></i></i></i></i></i></i></i></i>
             </div> }>
-
+            {/* {posts} */}
             {this.state.scorecards.map(card=>{
-              return(<div className={card.class} key={card.key}>
-                      <div className="board">
-                        <div className="truth"><img src={logo} width="120" height="120" alt=""/></div>
-                        <div className="body">
-                          <div className="pic"><img src={F} width="80" height="80" alt=""/></div>
-                          <div className="topic">Sup</div>
-                          <div className="headline">YAW YAW YAW YAW YAW YAW YAW YAW YAW YAW YAW YAW YAW YAW YAW YAW YAW YAW YAW</div>
-                        </div>
-                      </div>
-                    </div>)
+              return(
+                <div className="container individual-post" key={card.key}>
+                  <div className="row h-100">
+                    <div className="col my-auto">
+                      <div className="pic mx-auto"><img src={F} width="80" height="80" alt=""/></div>
+                    </div>
+                    <div className="col-6 my-auto">
+                      <div className="headline">Sup</div>
+                      <div className="description">Sarfaraz nai dhoka dya, Pakistani team raat ko burger or pizza khati rahee</div>
+                    </div>
+                    <div className="col my-auto">
+                      <div className="verdict mx-auto"><img src={logo} width="140" height="140" alt=""/></div>
+                    </div>
+                  </div>
+                </div>
+              );
             })}
         </InfiniteScroll>
       </div>

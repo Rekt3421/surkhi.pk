@@ -6,31 +6,31 @@
     min-height: 100% !important; /* real browsers */
 }
 
-.dawg {
-	max-width: 716.36px;
-	height: 187.33px;
-	border: 0 0 0 3px #eaeaea;
-	margin: 0 0 1.5em;
-	padding: 1em;
-	box-shadow: 0 0 0 3px #f3f3f3;
-	background: #ffffff;
+.individual-post {
+    width: 860px;
+    height: 200px;
+    background: #ffffff;
+    border-radius:5px;
+    padding: 1.2rem;
+	margin: 1rem auto;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    &:hover{
+        box-shadow: 0 8px 5px rgba(0,0,0,0.25), 0 6px 10px rgba(0,0,0,0.22);
+    }
 }
+
 
 .centered {
     text-align:center;
 }
 
 .board {
-	width: 456.36px;
-	height: 174.261px;
-	padding: 0px 190px 0px 100px ;
-}
-
-.truth {
-	float:right;
-	width: 140px;
-	height: 153.352px;
-	margin: -10px -160px 0px 0px;
+    margin: auto 0px;
+	// width: 100%;
+    // display: inline-block;
+    // justify-content: space-around;
+    // position: relative;
 }
 
 .body {
@@ -39,30 +39,30 @@
 }
 
 .pic {
-	margin: 3px 0px 0px -100px;
-	width: 80px;
-	height: 86.364px;
+	width: 50%;
+    height: auto;
 }
 
-.topic {
-	margin: -80px 0px 0px 0px;
-	width: 456.36px;
-	height: 23.636px;
+.verdict {
+	float:right;
+	width: 140px;
+	height: 153.352px;
+}
+
+.headline {
+	width: 60%;
 	color: #B42628;
 	text-align: justify;
-	font-family: Arial;
+    font-family: Arial;
+    margin: 5px 0px;
 	font-size: 22px;
 	color: #B42628;
 	font-weight: bold;
-	line-height: 10px;
 }
 
-.headline{
-	width: 456.36px;
-	height: 118.182px;
-	margin: 0px 0px 0px 0px;
-	line-height: 25px;
-	font-family: Arial;
+.description{
+    margin: 5px 0px;
+	font-family: 'Roboto';
 	text-align: justify;
 }
 
