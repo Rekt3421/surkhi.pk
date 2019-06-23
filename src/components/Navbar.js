@@ -3,6 +3,8 @@ import '../App.scss';
 import SurkhiLogo from '../assets/images/surkhi-meter-nav.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInstagram, faTwitter, faFacebookF } from '@fortawesome/free-brands-svg-icons'
+import Services from './Services';
+import {BrowserRouter, Route, Link} from 'react-router-dom';
 
 class Navbar extends Component {
     render(){
@@ -16,13 +18,13 @@ class Navbar extends Component {
                     <div className="collapse navbar-collapse" id="inside-nav">
                         <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
                             <li className="nav-item">
-                                <a className="nav-link" href="/about">About</a>
+                                <Link className="nav-link" to="/about">About</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/services">Services</a>
+                                <Link className="nav-link" to="/services">Services</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/insights">Insights</a>
+                                <Link className="nav-link" to="/insights">Insights</Link>
                             </li>
                         </ul>
 
@@ -54,6 +56,8 @@ class Navbar extends Component {
                     </div>
                 </nav>
             </header>
+                
+            // </BrowserRouter>
         );
     }
 }
