@@ -21,4 +21,8 @@ const Modal = ({ handleClose, show, children }) => {
     );
 };
 
-export default Modal;
+export default React.memo(Modal); //React.memo optimizes components that need not be rendered continuously
+
+
+// When to use memo? 
+// If parent changes are to be reflected on children, then we should not use memo on those children

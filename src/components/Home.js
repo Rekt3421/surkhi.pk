@@ -1,9 +1,14 @@
 import React, {Component} from 'react';
+import PostCreator from './PostCreator';
+import Navbar from './Navbar';
+import Dashboard from './dashboard';
 import InfiniteScroll from 'react-infinite-scroller';
 import SearchBar from './SearchBar';
 import '../App.scss';
 import F from '../assets/images/F.png'
 import logo from '../assets/images/logo.svg';
+
+
 
 class Home extends Component{
     state={
@@ -35,10 +40,13 @@ class Home extends Component{
         //   key = {card.key}
         // />
         return(
-            <div>
+            <div className="app-container">
                 <div className="landing-page">
+                    <Navbar />
                     <SearchBar />
                 </div>
+                <Dashboard />
+                <PostCreator />
                     <InfiniteScroll pageStart={0} loadMore={this.loadFunc} hasMore={this.state.moar} 
                     loader = {<div className="loader-wheel" key={0}>
                         <i><i><i><i><i><i><i><i><i><i><i><i>
@@ -64,7 +72,7 @@ class Home extends Component{
                         );
                         })}
                     </InfiniteScroll>
-                </div>
+            </div>
         );
 
         

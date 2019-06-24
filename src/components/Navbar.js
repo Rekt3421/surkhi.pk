@@ -4,7 +4,7 @@ import SurkhiLogo from '../assets/images/surkhi-meter-nav.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInstagram, faTwitter, faFacebookF } from '@fortawesome/free-brands-svg-icons'
 import Services from './Services';
-import {BrowserRouter, Route, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 class Navbar extends Component {
     render(){
