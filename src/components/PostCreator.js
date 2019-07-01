@@ -1,18 +1,58 @@
 import React, {Component} from 'react';
+import Aux from '../hoc/Auxiliary';
+import TagsInput from 'react-tagsinput'
+import ReactTags from 'react-tag-autocomplete';
+import './post.scss';
 
 class PostCreator extends Component {
     constructor(props){
         super(props);
         this.state = {
+            tags: ['Pakistan'],
             chips: []
         }
     }
+    handleTagChange = (tags) => {
+        this.setState({tags});
+    }
 
-    onChange = (chips) => {
-        this.setState({chips});
+    handleListTagClick(tag) {
+        this.setState({tags: [...this.state.tags, tag]}); // keep existing tag and add one to it
+    } 
+
+    handleChangeInput = (tag) => {
+        this.setState({tag})
+    }
+    notDuplicate(tags, newTag) {
+        return (!tags.includes(newTag) || this.props.allowDuplicates);
+    }
+    addTag(tag) {
+        if (this.notDuplicate(this.state.tags, tag)) {
+            this.setState({tags: [...this.state.tags, tag], inputValue: ''}, () => {
+                this.handleNewTag(this.state.tags);
+            });
+        }
+    }
+    handleTagDelete(index, e) {
+        this.deleteTag(index, () => {
+            this.props.onTagChange(this.state.tags);
+        });
+    }
+    deleteTag(index, callback) {
+        let tags = this.state.tags.slice();
+        
+        tags.splice(index, 1);
+        this.setState({ tags }, () => {
+            if (callback) callback();
+        });
     }
     
+
     render(){
+        let imageUrl = '';
+        let urlChange = (e) => {
+            imageUrl = e.target.value;
+        }
         const styles = {
             chipsContainer: {
                 width: '100%',
@@ -26,61 +66,64 @@ class PostCreator extends Component {
             }
         } 
         return(
-            <div class="container">  
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Panel 1</h3>
+            <Aux>
+            <div className="container postcreator-widget">  
+                <div className="panel panel-default">
+                    <div className="panel-heading">
+                        <h3 className="panel-title">Post Creator Panel</h3>
                     </div>
-                    <div class="panel-body">
-                    <div class="alert alert-warning"> Please complete required fields marked in red.</div>
+                    <div className="panel-body">
+                    <div className="instructions"> 
+                        <p>For editorial purposes only: Please write the <strong>name</strong> and <strong>summary</strong> of the 
+                            article, then choose an appropriate <strong>image</strong> to display. Write the <strong>category</strong> of
+                            the article that it belongs to (You may choose multiple). Lastly, select the <strong>Surkhi 
+                            Rating</strong> before pressing the "Submit" button. You may choose to start over by pressing 
+                            "Reset".
+                        </p>
+                    </div>
                     <form>
-                        <div class="row">
-                            <div class="col-sm-6"> 
-                                <div class="form-group">
-                                    <label class="control-label">Post Title</label>
-                                    <input type="text" class="form-control" placeholder="Enter first name" />
+                        <div className="row">
+                            <div className="col-sm-6"> 
+                                <div className="form-group">
+                                    <label className="control-label">Post Title</label>
+                                    <input type="text" className="form-control" placeholder="Enter first name" name="postTitle"/>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                                <label class="control-label">Select Post Category</label>
-                                <div class="container my-5">
-                                    <div id="chips-autocomplete-test" class="chips chips-placeholder chips-autocomplete"></div>
-                                </div>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" for="inputGroupSelect01">Category</label>
+                            <div className="col-sm-6">
+                                <div className="form-group">
+                                    <label className="control-label">Select Post Category</label>
+                                    <div className="input-group">
+                                        <div className="input-group-prepend">
+                                            <label className="input-group-text" for="inputGroupSelect01">Category</label>
+                                            <TagInput 
+                                                onTagChange={this.handleTagChange}
+                                                tags = {this.state.tags}
+                                            />
+                                        </div>
                                     </div>
-                                    {/* <Chips theme={theme.styles}
-                                        value={this.state.chips}
-                                        onChange={this.onChange}
-                                        suggestions={["Pakistan", "Politics", "International Affairs", "Religion", "Economy", "Rumor"]}
-                                    /> */}
                                 </div>
                             </div> 
                         </div>
             
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <label class="control-label">Post Image</label>
+                        <div className="row">
+                            <div className="col-sm-6">
+                                <label className="control-label">Post Image</label>
                                 <div class="input-group">
-                                    <span class="input-group-btn">
+                                    <span class="input-group-prepend">
                                         <span class="btn btn-default btn-file">
-                                            <label class="input-group-text" for="inputGroupSelect01">Browse</label>
-                                            <input type="file" id="imgInp" />
+                                            Browse… <input type="file" id="imgInp" onChange={urlChange}/>
                                         </span>
                                     </span>
-                                    <input type="text" class="form-control" readOnly />
+                                    <input type="text" class="form-control" value readonly />
                                 </div>
-                                <img id='img-upload'/>
                             </div>
-                    
-                            <div class="col-sm-6">
-                                <label class="control-label">Select Verdict</label>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" for="inputGroupSelect01">Verdict</label>
+                            <div className="col-sm-6">
+                                <label className="control-label">Select Verdict</label>
+                                <div className="input-group mb-3">
+                                    <div className="input-group-prepend">
+                                        <label className="input-group-text" for="inputGroupSelect01">Verdict</label>
                                     </div>
-                                    <select class="custom-select" id="inputGroupSelect01">
+                                    <select className="custom-select" id="inputGroupSelect01">
                                         <option selected>Choose...</option>
                                         <option value="1">Khara Such</option>
                                         <option value="2">Such</option>
@@ -93,21 +136,166 @@ class PostCreator extends Component {
                         </div>
                     </form>
                 </div>
-                <div class="panel-footer">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="pull-right">
-                                <button type="button" class="btn btn-default reset">Reset</button>
-                                <button type="button" class="btn btn-primary submit">Submit</button>
+                <div className="panel-footer">
+                    <div className="row">
+                        <div className="col-sm-12">
+                            <div className="pull-right">
+                                <button type="button" className="btn btn-danger reset">Reset</button>
+                                <button type="button" className="btn btn-success submit" onSubmit={this.onSubmitHandler}>Submit</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        </Aux>
         );
     }
 
 }
+
+class TagInput extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+        inputValue: '',
+        tags: this.props.tags || []
+        }
+    }
+
+    handleNewTag = (tags) => {
+        if (this.props.onNewTag) this.props.onNewTag(tags);
+        if (this.props.onTagChange) this.props.onTagChange(tags);
+    }
+
+    handleInputChange = ({target: { value: inputValue }}) => {
+        inputValue = inputValue == ',' ? '' : inputValue;
+        this.setState({inputValue});
+    }
+
+    handleKeyDown = e => {
+        let { key, target: {value} } = e;
+        let { tags } = this.state;
+        switch (key) {
+        case 'Tab':
+            if (value) e.preventDefault();
+        case 'Enter':
+        case ',':
+            value = value.trim();
+            if (value && this.notDuplicate(tags, value)) {
+            this.addTag(value);
+            } else {
+            this.setState({inputValue: ''})
+            }
+            break;
+        case 'Backspace':
+            if (!value) {
+            this.handleTagDelete(tags.length - 1);
+            }
+            break;
+        default:
+        }
+    }
+
+    handleTagDelete = (index, e) => {
+        this.deleteTag(index, () => {
+        this.props.onTagChange(this.state.tags);
+        });
+    }
+
+    deleteTag = (index, callback) => {
+        let tags = this.state.tags.slice();
+        tags.splice(index, 1);
+        this.setState({ tags }, () => {
+        if (callback) callback();
+        });
+    }
+
+    notDuplicate = (tags, newTag) => {
+        return (!tags.includes(newTag) || this.props.allowDuplicates);
+    }
+
+    addTag = tag => {
+        if (this.notDuplicate(this.state.tags, tag)) {
+        this.setState({tags: [...this.state.tags, tag], inputValue: ''}, () => {
+            this.handleNewTag(this.state.tags);
+        });
+        }
+    }
+
+    updateControlledTags = tags => {
+        if (tags && !Helpers.hasDuplicates(tags)) {
+        this.setState({ tags }, () => {
+            // this.props.onTagChange(tags);
+        });
+        }
+    }
+
+    componentWillReceiveProps = (nextProps) => {
+        this.updateControlledTags(nextProps.tags);
+    }
+
+    render() {
+        return (
+        <span className="tagInputWrapper">
+            <TagsList 
+            tags={this.state.tags} 
+            onTagDelete={this.handleTagDelete} 
+            hashtag={this.props.hashtag}
+            />
+            <input 
+            name="tagInput" 
+            className="tagInput" 
+            placeholder="enter a tag..." 
+            value={this.state.inputValue} 
+            onChange={this.handleInputChange}
+            onKeyDown={this.handleKeyDown}
+            />
+        </span>
+        );
+    }
+}
+class Helpers {
+    static contains(orig, filter) {
+        let res = filter.map(item => {
+        return orig.includes(item);
+        });
+        return !res.includes(false);
+    }
+
+    static hasDuplicates(array) {
+        return (new Set(array)).size !== array.length;
+    }
+    }
+
+
+const TagsList = ({tags, onTagDelete, hashtag}) => {
+    let list = tags.map((tag, index) => (
+    <Tag 
+        name={tag} 
+        onDelete={onTagDelete} 
+        index={index} 
+        hashtag={hashtag} />
+    ));
+    return (
+        <ul name="tagsList" className="tagsList">
+            {list}
+        </ul>
+    )
+}
+
+const Tag = ({name, index, onDelete, hashtag, hashtagStyle}) => {
+    return (
+        <li>
+            {hashtag && (
+                <span style={{color: '#898989', fontWeight: 'bold', ...hashtagStyle}}># </span>
+            )}
+            {name} 
+            <a href="#" onClick={e => onDelete(index, e)}>x</a>
+    </li>
+    );
+}
+
 
 export default PostCreator;

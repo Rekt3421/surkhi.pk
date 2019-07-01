@@ -7,7 +7,7 @@ import SearchBar from './SearchBar';
 import '../App.scss';
 import F from '../assets/images/F.png'
 import logo from '../assets/images/logo.svg';
-
+import SurkhiAboutWidget from './WhatisSurkhi';
 
 
 class Home extends Component{
@@ -45,7 +45,7 @@ class Home extends Component{
                     <Navbar />
                     <SearchBar />
                 </div>
-                <Dashboard />
+                <SurkhiAboutWidget />
                 <PostCreator />
                     <InfiniteScroll pageStart={0} loadMore={this.loadFunc} hasMore={this.state.moar} 
                     loader = {<div className="loader-wheel" key={0}>

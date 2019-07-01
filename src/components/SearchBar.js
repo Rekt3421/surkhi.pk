@@ -7,7 +7,7 @@ class SearchBar extends Component{
     keyDownHandler = event => {
         const url = event.target.value;
         console.log(url);
-        this.fetchNewsAuthenticity(url);
+        //this.fetchNewsAuthenticity(url);
     }
     useEffect = () => {
         $(document).ready(function() {
