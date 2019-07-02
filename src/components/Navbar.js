@@ -18,7 +18,9 @@ class Navbar extends Component {
                     <div className="collapse navbar-collapse" id="inside-nav">
                         <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
                             <li className="nav-item">
-                                <Link className="nav-link" to="/about">About</Link>
+                                <button className="btn submitTopic">
+                                    <Link to="/submit-topic">Submit a Topic</Link>
+                                </button>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/services">Services</Link>

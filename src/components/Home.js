@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import PostCreator from './PostCreator';
 import Navbar from './Navbar';
-import Dashboard from './dashboard';
 import InfiniteScroll from 'react-infinite-scroller';
 import SearchBar from './SearchBar';
 import '../App.scss';

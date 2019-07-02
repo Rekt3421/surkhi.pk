@@ -8,6 +8,7 @@ class PostCreator extends Component {
     constructor(props){
         super(props);
         this.state = {
+
             tags: ['Pakistan'],
             chips: []
         }
@@ -48,6 +49,11 @@ class PostCreator extends Component {
     }
     
 
+
+    resetHandler = ({ fields, form }) => {
+        this.setState({ password: '' }) // manually reset controlled fields ("password")
+    }
+
     render(){
         let imageUrl = '';
         let urlChange = (e) => {
@@ -86,7 +92,11 @@ class PostCreator extends Component {
                             <div className="col-sm-6"> 
                                 <div className="form-group">
                                     <label className="control-label">Post Title</label>
-                                    <input type="text" className="form-control" placeholder="Enter first name" name="postTitle"/>
+                                    <input type="text" 
+                                        className="form-control" 
+                                        placeholder="Enter first name" 
+                                        name="postTitle"
+                                        required />
                                 </div>
                             </div>
                             <div className="col-sm-6">
@@ -98,11 +108,20 @@ class PostCreator extends Component {
                                             <TagInput 
                                                 onTagChange={this.handleTagChange}
                                                 tags = {this.state.tags}
+                                                name = "postCategories"
                                             />
                                         </div>
                                     </div>
                                 </div>
                             </div> 
+                        </div>
+                        <div className="row">
+                            <div className="col-sm-12"> 
+                                <div className="form-group">
+                                    <label className="control-label">Post Summary</label>
+                                    <input type="textarea" className="form-control" placeholder="Enter Summary..." name="postSummary"/>
+                                </div>
+                            </div>
                         </div>
             
                         <div className="row">
@@ -114,7 +133,7 @@ class PostCreator extends Component {
                                             Browse… <input type="file" id="imgInp" onChange={urlChange}/>
                                         </span>
                                     </span>
-                                    <input type="text" class="form-control" value readonly />
+                                    <input type="text" class="form-control" value readOnly />
                                 </div>
                             </div>
                             <div className="col-sm-6">
@@ -140,8 +159,8 @@ class PostCreator extends Component {
                     <div className="row">
                         <div className="col-sm-12">
                             <div className="pull-right">
-                                <button type="button" className="btn btn-danger reset">Reset</button>
-                                <button type="button" className="btn btn-success submit" onSubmit={this.onSubmitHandler}>Submit</button>
+                                <button type="button" className="btn btn-danger reset" onReset={this.resetHandler}>Reset</button>
+                                <button type="button" className="btn btn-success submit" onSubmit={this.submitHandler}>Submit</button>
                             </div>
                         </div>
                     </div>
@@ -157,7 +176,6 @@ class PostCreator extends Component {
 class TagInput extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
         inputValue: '',
         tags: this.props.tags || []
