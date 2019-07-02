@@ -1,0 +1,503 @@
+.wrapper::before, .wrapper::after {
+    position: relative;
+}
+
+a{
+    color: #000;
+    text-decoration: none;
+}
+
+.wrapper{
+    padding:0;
+    margin:0;
+    position:relative;
+    position: relative !important;
+}
+
+.no-margin{
+    margin:0px !important;
+}
+
+.service-colored-section{
+    padding: 25px 0px;
+    background: #ff964a;
+    height: 300px;
+}
+.service-desc-section{
+    padding: 30px;
+    background: #d30a31;
+    height: 300px;
+}
+
+.service-icon{
+    text-align: center;
+    img{
+    height:210px;
+    width: auto;
+    }   
+}
+
+.icon-heading{
+    color: #ffffff;
+    text-align: center;
+    font-size: 2.1em;
+    text-transform: uppercase;
+    letter-spacing: 1.75pt;
+    font-family: "Roboto Condensed";
+    font-weight: 900;
+
+}
+
+
+.row .quote-section{
+    background: #EDE2E2;
+    height: 275px;
+}
+
+
+// The button
+
+.cube {
+    margin: 4px auto;
+    color: #ccc;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    transition: all 0.85s cubic-bezier(.17,.67,.14,.93);
+    transform-style: preserve-3d;
+    transform-origin: 100% 50%;
+    width: 20em;
+    height: 4em;
+    
+    &:hover {
+        transform: rotateX(-90deg);
+    }
+}
+
+.side {
+    box-sizing: border-box;
+    position: absolute;
+    display: inline-block;
+    height: 4em;
+    width: 20em;
+    text-align: center;
+    text-transform: uppercase;
+    padding-top: 1.5em;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.top {
+    background: rgb(255, 184, 53);
+    color: #222229;
+    box-shadow: inset 0 0 0 3px #fff;
+    transform: rotateX(90deg) translate3d(0, 0, 2em);
+    font-weight: 700; 
+}
+
+.front {
+    background: #ad0f0f;
+    color: #fff;
+    box-shadow: inset 0 0 0 3px #fff;
+    transform: translate3d(0, 0, 2em);
+}
+
+.service-writeup{
+    color:white;
+    font-family: 'Open Sans';
+    text-align: justify;
+    font-size:0.9em;
+}
+.service-heading{
+    letter-spacing: 1.3px;
+    font-weight: 700;
+    color: white;
+    font-size: 1.8em;
+    font-family: 'Roboto Condensed';
+    text-transform: uppercase;
+}
+
+
+.services-ask{
+    text-align: center;
+    padding: 7.5px;
+    padding-bottom: 15px;  
+    h2{
+        font-family: 'Roboto Condensed';
+        font-weight: 700;
+        font-size: 34pt;
+        letter-spacing: 1.1pt;
+    }
+}
+
+
+.the-modal{
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+    height: 385px;
+    padding:10px;
+    border-radius: .145rem;
+    position: fixed;
+    text-align: center;
+}
+.modal{
+    top: 0;
+    left: 0;
+    width:620px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.modal-details{
+    color: #616161;
+    font-weight: 500;
+}
+.enquiry-text{
+    width: 100%;
+    position: relative;
+    line-height: 22.8571px;
+    font-size: 14px;
+    padding:8px;
+    border-radius: 8px;
+    background: none 0% 0% / auto repeat scroll padding-box border-box rgb(238,238,238);
+    height: 100px;
+}
+
+.enquiry-email{
+    width: 100%;
+    position: relative;
+    line-height: 22.8571px;
+    font-size: 14px;
+    padding:0px 10px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    &:focus{
+        background: none 0% 0% / auto repeat scroll padding-box border-box rgb(238,238,238);
+    }
+}
+
+.modal-footer-1{
+    text-align:center;
+}
+
+.submit-btn{
+    background: linear-gradient(90deg, var(--c1, #ff7171), var(--c2, #fdcead) 51%, var(--c1, #ff7171)) var(--x, 0)/ 200%;
+    transition: 0.5s;
+    height: 43px;
+    width: 50%;
+    &:hover{
+        background-position: right center;
+        box-shadow: 0px 2.5px 4px 0px rgba(0, 0, 0, 0.18), 0 4px 10px 0 rgba(0, 0, 0, 0.15);
+        outline: 0;
+    }
+}
+
+
+//******* MODAL SCSS  *******//
+.display-block {
+    display: block;
+}
+.display-none {
+    display: none;
+}
+
+
+//****** *********** ********//
+
+.card-wrapper{
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin: 0;
+}
+.surkhiAbout-widget {
+    width: 100%;
+    padding-right: 5px;
+    padding-left: 5px;
+    margin: 30px auto;
+
+    .welcome-card {
+        position: relative;
+        width: 100%;
+        -webkit-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding: 0;
+        .card-header{
+            border-bottom: 0px;
+            a{
+                width: 100%;
+                display: -webkit-flex;
+                display: flex;
+                -webkit-justify-content: space-between;
+                justify-content: space-between;
+                h1.title{
+                    font-weight:600;
+                    font-size: .75rem;
+                    color: #000;
+                }
+            }
+        }
+        .card-title+.card-text{
+            margin-top: .5rem;
+        }
+        .card-text{
+            font-size: 0.75rem;
+            line-height: 1.25;
+        }
+        .card-header+.collapse.show {
+            border-top: 2px solid rgba(0,0,0,.1);
+        }
+        .btn-wrapper+.card-text.small{
+            margin-top: 15px;
+            color: #939394;
+            font-weight: 500;
+            letter-spacing: .15px;
+        }
+    }
+}
+
+.surkhiAbout-widget .welcome-card .card-text+.btn-wrapper{
+    margin-top: 1.25rem;
+}
+
+.welcome-card .card-row .card-body:not(:last-of-type) {
+    padding-bottom: 2.75rem;
+}
+.card-body{
+    padding:2.75rem
+}
+
+.surkhiAbout-widget .welcome-card .card-row>div {
+    display: -webkit-flex;
+    display: flex;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.04);
+    border-radius: 8px;
+    border-width: 0;
+    box-shadow: 0 0 15px -1px rgba(0,0,0,.05);
+}
+
+.card .card-header:first-of-type {
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+}
+
+.welcome-card .card-row .card-body:not(:last-of-type):after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: calc(100% - 5rem);
+    background: rgba(0,0,0,.1);
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 0;
+    line-height: 1.1;
+    letter-spacing: -.5px;
+}
+
+
+
+.surkhiAbout-widget .welcome-card .card-title {
+    font-size: .9375rem;
+    letter-spacing: .19px;
+    font-weight: 600;
+}
+
+.surkhiAbout-widget .welcome-card .card-text {
+    font-size: .75rem;
+} 
+
+.welcome-card .card-title+.media-list {
+    margin-top: 1rem;
+}
+.surkhiAbout-widget .welcome-card .card-title+.card-subtitle {
+    margin-top: 2px;
+}
+.surkhiAbout-widget .welcome-card .card-subtitle {
+    font-size: .7125rem;
+    color: #939394;
+    display: block;
+    font-weight: 500;
+}
+
+.surkhiAbout-widget .welcome-card .faq .media-wrapper {
+    padding: 0 0 1.25rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 2px solid rgba(0,0,0,.1);
+}
+
+svg:not(:root).svg-inline--fa {
+    overflow: visible;
+}
+
+.svg-inline--fa.fa-w-10 {
+    width: 0.625em;
+}
+.svg-inline--fa {
+    display: inline-block;
+    font-size: inherit;
+    height: 1em;
+    overflow: visible;
+    vertical-align: -0.125em;
+}
+.media-list .media:visited h5, .media-list .media:visited p {
+    color: #939394;
+}
+.media-list .featured-media:before {
+    content: "";
+    display: block;
+    padding-top: 56.25%;
+}
+
+.media-list .featured-media img {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+.media-list .featured-media:before {
+    content: "";
+    display: block;
+    padding-top: 56.25%;
+}
+
+.surkhiAbout-widget .welcome-card ul {
+    padding-left: 0;
+    list-style: none;
+    margin-bottom: 0;
+    margin-top: 2rem;
+    li{
+        margin-bottom: 1rem;
+        .media{
+            display: flex;
+            span{
+                margin-right: 10px;
+                font-size: .9375rem;
+            }
+        }
+
+    }
+}
+
+.surkhiAbout-widget .welcome-card .media .title {
+    font-size: .9375rem;
+    margin-bottom: 0;
+}
+.surkhiAbout-widget .welcome-card .editors-pick {
+    position: relative;
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    .title {
+        font-size: .9375rem;
+        font-family: IBM Plex Serif,Serif;
+        max-width: 100%;
+        margin: 0;
+    }
+}
+
+.surkhiAbout-widget .welcome-card .editors-pick:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: rgba(0,0,0,.1);
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.surkhiAbout-widget .welcome-card .card-text a, .surkhiAbout-widget .welcome-card .text-link a {
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.btn-link, .btn-link:hover {
+    color: #000;
+    text-decoration: none;
+}
+
+.surkhiAbout-widget .welcome-card .faq .btn-link {
+    font-size: .9375rem;
+    font-weight: 500;
+    line-height: 1.35;
+    width: 100%;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.surkhiAbout-widget .welcome-card .editors-pick .label {
+    font-size: .75rem;
+    font-weight: 500;
+    -webkit-order: 2;
+    order: 2;
+}
+
+@media (min-width: 1024px){
+    .surkhiAbout-widget {
+        max-width: 1100px;
+    }
+    .surkhiAbout-widget .welcome-card .card-row .card-body:not(:last-of-type):after {
+        content: "";
+        position: absolute;
+        width: 2px;
+        height: calc(100% - 5rem);
+        background: rgba(0,0,0,.1);
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+    }
+    .surkhiAbout-widget .welcome-card .card-row .card-body {
+        width: 33%;
+        position: relative;
+    }
+    .media-list .media-body .title {
+        max-width: 90%;
+    }
+    .surkhiAbout-widget .welcome-card .editors-pick .featured-media {
+        max-width: 80px;
+        margin-right: 1rem;
+    }
+}
+
+.btn-paypal {
+    color: #fff;
+    background-color: #2997d8;
+    border-color: #2997d8;
+    box-shadow: inset 0 1px 0 hsla(0,0%,100%,.15), 0 1px 1px rgba(0,0,0,.075);
+    font-weight: 600;
+    padding: 10px 20px;
+    font-size: .9375rem;
+    line-height: 1;
+    border-radius: 50px;
+}
+
+.btn-paypal:not(:disabled):not(.disabled).active, .btn-paypal:not(:disabled):not(.disabled):active, .show>.btn-paypal.dropdown-toggle {
+    color: #fff;
+    background-color: #2079ae;
+    border-color: #1e72a3;
+}
