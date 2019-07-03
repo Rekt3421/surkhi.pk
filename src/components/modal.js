@@ -1,5 +1,5 @@
 import React from 'react';
-import './services.scss';
+import '../assets/stylesheets/services.scss';
 
 const Modal = ({ handleClose, show, children }) => {
     const showHideClassName = show ? "modal display-block" : "modal display-none";

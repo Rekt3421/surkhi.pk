@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import '../App.scss';
-import SurkhiLogo from '../assets/images/surkhi-meter-nav.png'
+import '../../assets/stylesheets/App.scss';
+import SurkhiLogo from '../../assets/images/surkhi-meter-nav.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInstagram, faTwitter, faFacebookF } from '@fortawesome/free-brands-svg-icons'
-import Services from './Services';
 import {Link} from 'react-router-dom';
 
 class Navbar extends Component {
@@ -24,9 +23,6 @@ class Navbar extends Component {
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/services">Services</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/insights">Insights</Link>
                             </li>
                         </ul>
 

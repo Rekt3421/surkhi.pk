@@ -1,5 +1,5 @@
 import React from 'react';
-import './services.scss'
+import '../assets/stylesheets/services.scss';
 
 const ServiceBlockLeft = (props) => {
     return(

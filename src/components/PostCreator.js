@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Aux from '../hoc/Auxiliary';
 import TagsInput from 'react-tagsinput'
 import ReactTags from 'react-tag-autocomplete';
-import './post.scss';
+import '../assets/stylesheets/post.scss';
 
 class PostCreator extends Component {
     constructor(props){

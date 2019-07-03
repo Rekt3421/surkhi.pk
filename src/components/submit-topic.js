@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import Navbar from './Navbar';
+import '../assets/stylesheets/App.scss';
+import Navbar from './static-comps/Navbar';
 import Aux from '../hoc/Auxiliary';
-import Footer from './footer';
-import '../App.scss';
+import Footer from './static-comps/footer';
 import ReCAPTCHA from "react-google-recaptcha";
+import {Link} from 'react-router-dom';
 
 class SubmitTopic extends Component {
 
@@ -25,7 +26,7 @@ class SubmitTopic extends Component {
                         <div className="contact-banner">
                             <p className="banner-description">Fake news is rampant in the subcontinent.
                             <span className="banner-description-bold"> Surkhi needs your help!</span></p>
-                            <button className="btn btn-outline-warning learnHow">Learn How</button>
+                            <Link to="/support-us"><button className="btn btn-outline-warning learnHow">Learn How</button></Link>
                         </div>
                     </div>
                     <div className="container">
