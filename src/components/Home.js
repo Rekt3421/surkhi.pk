@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
+import '../assets/stylesheets/App.scss';
 import PostCreator from './PostCreator';
-import Navbar from './Navbar';
+import Navbar from './static-comps/Navbar';
+import Footer from './static-comps/footer';
 import InfiniteScroll from 'react-infinite-scroller';
 import SearchBar from './SearchBar';
-import '../App.scss';
 import F from '../assets/images/F.png'
 import logo from '../assets/images/logo.svg';
 import SurkhiAboutWidget from './WhatisSurkhi';
@@ -71,6 +72,7 @@ class Home extends Component{
                         );
                         })}
                     </InfiniteScroll>
+                    <Footer />
             </div>
         );
 

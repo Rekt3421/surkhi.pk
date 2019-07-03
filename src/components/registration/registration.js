@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './registration.scss';
+import '../../assets/stylesheets/registration.scss';
 
 const emailRegex = RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)
 

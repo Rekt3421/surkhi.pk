@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Aux from '../hoc/Auxiliary';
-import './services.scss';
+import {Link} from 'react-router-dom';
+import '../assets/stylesheets/services.scss';
 
 class SurkhiAboutWidget extends Component {
     constructor(props){
@@ -32,7 +33,9 @@ class SurkhiAboutWidget extends Component {
                                     <div className="intro">
                                         <h3 className="card-title">Surkhi</h3>
                                         <span className="card-subtitle">/<a href="https://en.wikipedia.org/wiki/Help:IPA/English" target="_blank">surkhi</a>/ NOUN and sometimes VERB</span>
-                                        <p className="card-text">We are the internet’s go-to source for discerning what is true and what is total nonsense. Before you scroll further, a few tips on how to “snopes”:</p>
+                                        <p className="card-text">SURKHI is Pakistan's 1st future media enterprise that aims to fight fake news and provide data-driven
+                                        investigative reporting focusing on economics, society and politics of Pakistan. Before you scroll further, a few tips on how 
+                                        to "Surkhi":</p>
                                         <ul>
                                             <li>
                                                 <div className="media">
@@ -42,22 +45,12 @@ class SurkhiAboutWidget extends Component {
                                                     </span>
                                                     <div className="media-body">
                                                         <h4 className="title">Search</h4>
-                                                        <p className="card-text">Thousands upon thousands of fact checks and investigations live in our archives. You might want to bookmark <a href="https://www.snopes.com/search/">this page</a>.</p>
+                                                        <p className="card-text">Search for hundreds of fact checks and investigations that live in our archives. Click on the search 
+                                                        icon above to start searching for real stories.</p>
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li>
-                                                <div className="media">
-                                                    <span className="fa-stack fa-1x">
-                                                        <svg className="svg-inline--fa fa-circle fa-w-16 fa-stack-2x" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path></svg>
-                                                        <svg className="svg-inline--fa fa-newspaper fa-w-18 fa-stack-1x fa-inverse" aria-hidden="true" focusable="false" data-prefix="far" data-icon="newspaper" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M552 64H112c-20.858 0-38.643 13.377-45.248 32H24c-13.255 0-24 10.745-24 24v272c0 30.928 25.072 56 56 56h496c13.255 0 24-10.745 24-24V88c0-13.255-10.745-24-24-24zM48 392V144h16v248c0 4.411-3.589 8-8 8s-8-3.589-8-8zm480 8H111.422c.374-2.614.578-5.283.578-8V112h416v288zM172 280h136c6.627 0 12-5.373 12-12v-96c0-6.627-5.373-12-12-12H172c-6.627 0-12 5.373-12 12v96c0 6.627 5.373 12 12 12zm28-80h80v40h-80v-40zm-40 140v-24c0-6.627 5.373-12 12-12h136c6.627 0 12 5.373 12 12v24c0 6.627-5.373 12-12 12H172c-6.627 0-12-5.373-12-12zm192 0v-24c0-6.627 5.373-12 12-12h104c6.627 0 12 5.373 12 12v24c0 6.627-5.373 12-12 12H364c-6.627 0-12-5.373-12-12zm0-144v-24c0-6.627 5.373-12 12-12h104c6.627 0 12 5.373 12 12v24c0 6.627-5.373 12-12 12H364c-6.627 0-12-5.373-12-12zm0 72v-24c0-6.627 5.373-12 12-12h104c6.627 0 12 5.373 12 12v24c0 6.627-5.373 12-12 12H364c-6.627 0-12-5.373-12-12z"></path></svg>
-                                                    </span>
-                                                    <div className="media-body">
-                                                        <h4 className="title">Discover</h4>
-                                                        <p className="card-text">Shortcut to the most popular or most recent content when you visit the <a href="https://www.snopes.com/50-hottest-urban-legends/">Hot 50</a> and <a href="https://www.snopes.com/whats-new/">What’s New</a> pages.</p>
-                                                    </div>
-                                                </div>
-                                            </li>
+                                            
                                             <li>
                                                 <div className="media">
                                                     <span className="fa-stack fa-1x">
@@ -66,7 +59,8 @@ class SurkhiAboutWidget extends Component {
                                                     </span>
                                                     <div className="media-body">
                                                         <h4 className="title">Submit</h4>
-                                                        <p className="card-text">Can’t find what you’re looking for? <a href="https://www.snopes.com/contact/">Send us a note</a>. Your tip could be our next assignment.</p>
+                                                        <p className="card-text">If there is a particular news content which has not been reported, let us know! <Link 
+                                                        to="/submit-topic">Send us a note</Link>. Your submission could be our next assignment.</p>
                                                     </div>
                                                 </div>
                                             </li>

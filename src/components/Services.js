@@ -5,14 +5,28 @@ import Research from '../assets/images/research-03.png';
 import Analytics from '../assets/images/analytics-icon.png';
 import Reporting from '../assets/images/investigative-reporting.png';
 import Aux from '../hoc/Auxiliary';
-import Navbar from './Navbar';
-import './services.scss'
+import Navbar from './static-comps/Navbar';
+import Footer from './static-comps/footer';
+import '../assets/stylesheets/services.scss';
 
 class Services extends Component{
     render(){
         return(
             <Aux>
                 <Navbar />
+                <div className="full-width">
+                        <div className="contact-banner">
+                            <p className="banner-description">We have a multitude of services to choose from</p>
+                        </div>
+                    </div>
+                    <div className="container">
+                        <div className="contact-header">
+                            <h1 className="contactUs-Title">Services</h1>
+                            <hr />
+                            <h2 className="contactUs-subTitle"> Catering to your data driven and consultancy needs. </h2>
+                            <hr />
+                        </div>
+                </div>
                 <div className="wrapper">
                     <ServiceBlockLeft 
                         image = {FactCheck}
@@ -85,6 +99,7 @@ class Services extends Component{
                         </div>
                     </section>
                 </div>
+                <Footer />    
             </Aux>
         );
     }

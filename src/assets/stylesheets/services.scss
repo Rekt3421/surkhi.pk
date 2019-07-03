@@ -103,9 +103,10 @@ a{
 
 .service-writeup{
     color:white;
-    font-family: 'Open Sans';
+    font-family: 'Roboto';
     text-align: justify;
-    font-size:0.9em;
+    font-weight: 300;
+    font-size:1rem;
 }
 .service-heading{
     letter-spacing: 1.3px;
@@ -235,6 +236,7 @@ a{
                     font-weight:600;
                     font-size: .75rem;
                     color: #000;
+                    margin: auto 0px;
                 }
             }
         }
