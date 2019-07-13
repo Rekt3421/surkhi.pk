@@ -6,7 +6,7 @@ import Footer from './static-comps/footer';
 import ReCAPTCHA from "react-google-recaptcha";
 import {Link} from 'react-router-dom';
 
-class SubmitTopic extends Component {
+class Contact extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -92,4 +92,4 @@ class SubmitTopic extends Component {
     }
 }
 
-export default SubmitTopic;
+export default Contact;
