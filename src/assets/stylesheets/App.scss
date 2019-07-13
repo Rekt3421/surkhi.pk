@@ -7,7 +7,7 @@
 
 .individual-post {
     width: 1100px;
-    height: 200px;
+    min-height: 200px;
     background: #ffffff;
     border-radius:5px;
     padding: 1.2rem;
@@ -572,3 +572,85 @@ $color-snow: #e5e5e5;
 
 
 
+/****** FAQs Section ******/
+.info-topic-header{
+    padding: 1.5rem;
+    hr{
+        border-top: 1px solid #cc0000;
+    }
+    .label{
+        color:#cc0000;
+        font-size: 14px;
+    }
+}
+
+.questions-header{
+    .questions{
+        list-style: none;
+        padding: 1rem;
+        li{
+            padding:0.5rem;
+            font-size:1.25rem;
+            font-weight: 500;
+            a:hover{
+                color:#CC0000;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+.FAQ-subtitle{
+    line-height: 1.15;
+    width: 100%;
+    max-width: 760px;
+    font-weight: 700;
+    color: #000;
+    letter-spacing: -2px;
+    font-size: 3rem;
+    padding-bottom: 0.75rem;
+    margin-bottom: 1rem;
+}
+.faq-label{
+    font-size:1.15rem;
+    color:#CC0000;
+}
+.Faq-button{
+    background: #B42628;
+    a {
+        color: white;
+        text-decoration: none;
+    }
+}
+
+
+.surkhi-meter-image{
+    img{
+        width:100%;
+        height:auto;
+    }
+    
+}
+
+.surkhimeter-about{
+    border: 0px;
+    tr{
+        color:white;
+        min-height: 70px;
+    }
+    .kharasuch{
+        background:#1FB400;
+    }
+    .such{
+        background:#ACF000;
+    }
+    .mumkin{
+        background:#FFC33A;
+    }
+    .jhoot{
+        background:#FF6F37;
+    }
+    .fulljhoot{
+        background:#cc0000;
+    }
+}

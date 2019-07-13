@@ -24,6 +24,9 @@ class Navbar extends Component {
                             <li className="nav-item">
                                 <Link className="nav-link" to="/services">Services</Link>
                             </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/faqs">FAQs</Link>
+                            </li>
                         </ul>
 
                         <div id="circ">

@@ -7,6 +7,12 @@ import ReCAPTCHA from "react-google-recaptcha";
 import {Link} from 'react-router-dom';
 
 class SubmitTopic extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+
+        }
+    }
 
     validateFileSize = () => {
         console.log("hello");
@@ -53,11 +59,15 @@ class SubmitTopic extends Component {
                                 type="email" 
                                 placeholder="Email..." 
                                 name="email"
+                                value = {this.state.email}
+                                required
                                 className="form-control mt-4 formEmailArea"
                             />
                             <textarea 
                                 placeholder="Message" 
                                 name="Message"
+                                value = {this.state.message}
+                                required
                                 className="form-control mt-4 formTextArea"
                             />
                             <input 

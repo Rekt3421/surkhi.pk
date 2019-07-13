@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {ServiceBlockLeft, ServiceBlockRight} from './ServiceBlock';
+import {Link} from 'react-router-dom';
 import FactCheck from '../assets/images/fact-check.png';
 import Research from '../assets/images/research-03.png';
 import Analytics from '../assets/images/analytics-icon.png';
@@ -72,8 +73,10 @@ class Services extends Component{
                             <h2>We have a multitude of services to choose from</h2>
                         </div>
                             <div className="cube" onClick="openVerticallyCentered(content)">
-                            <span className="side top">Contact US!</span>
-                            <span className="side front">Want to know more details?</span>
+                                <Link to='submit-topic'>                        
+                                    <span className="side top">Contact US!</span>
+                                    <span className="side front">Want to know more details?</span>
+                                </Link>   
                             </div>
                             {
                             <div className="the-modal">
