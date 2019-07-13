@@ -18,7 +18,7 @@ class Navbar extends Component {
                         <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
                             <li className="nav-item">
                                 <button className="btn submitTopic">
-                                    <Link to="/submit-topic">Submit a Topic</Link>
+                                    <Link to="/contact">Submit a Topic</Link>
                                 </button>
                             </li>
                             <li className="nav-item">

@@ -303,14 +303,17 @@ const IsSurkhiPartisan = () => {
                         <div className="col-md-8 pl-0 pr-0">
                             <h5 className="faq-label">Answer</h5>
                             <div className="text-section">
-                                <p>Due to the volume of correspondence we receive, we regret that we may not be able to respond 
-                                    personally.
+                                <p>
+                                    Every individual, or organization, has an inherent bias towards certain notions based on what is available and what 
+                                    information they are exposed to. The human element of Surkhi, emulating the highest journalistic standards, tries to be 
+                                    as objective as humanly possible but there always will be comments passed on us that we siding with a particular political
+                                    party, which is not true. We try to stay as objective and centrist as the laws of nature can allow. 
+                                </p>  
+                                <p>
+                                    We also plan to incorporate machine learning as part our system to predict the credibility and authenticity of news
+                                    but we haven't done so as we are gathering data enough so we ourselves have full trust in the mechanism.
                                 </p>
-                                <p>When sending tips, links to articles, social media posts, or images, please provide as much detail 
-                                    as possible, including when and where you first came across the item(s) in question. If you have 
-                                    supporting images or screenshots, attach them to your message using the “Choose File” button
-                                    below.
-                                </p>
+                                
                             </div>
                             <div className="mt-5 mb-5">
                                 <button type="button "className="btn Faq-button"><Link to="/faqs">Go back to FAQs</Link></button>
@@ -342,13 +345,12 @@ const TypoInSurkhiPost = () => {
                         <div className="col-md-8 pl-0 pr-0">
                             <h5 className="faq-label">Answer</h5>
                             <div className="text-section">
-                                <p>Due to the volume of correspondence we receive, we regret that we may not be able to respond 
-                                    personally.
+                                <p>Please do! Corrections are welcome if there is an error from our side; but bare in mind that some text appearing in a colored
+                                    box represents quotations that we cite from various source which is not our own writing. We reproduce them exactly as we 
+                                    discovered them; hence, we do not edit that particular content. 
                                 </p>
-                                <p>When sending tips, links to articles, social media posts, or images, please provide as much detail 
-                                    as possible, including when and where you first came across the item(s) in question. If you have 
-                                    supporting images or screenshots, attach them to your message using the “Choose File” button
-                                    below.
+                                <p>Use our <Link to="/contact">contact form</Link> to inform us about any mistakes or typos Surkhi made which is not a
+                                quotation.
                                 </p>
                             </div>
                             <div className="mt-5 mb-5">
@@ -420,13 +422,11 @@ const ReproducingContent = () => {
                         <div className="col-md-8 pl-0 pr-0">
                             <h5 className="faq-label">Answer</h5>
                             <div className="text-section">
-                                <p>Due to the volume of correspondence we receive, we regret that we may not be able to respond 
-                                    personally.
-                                </p>
-                                <p>When sending tips, links to articles, social media posts, or images, please provide as much detail 
-                                    as possible, including when and where you first came across the item(s) in question. If you have 
-                                    supporting images or screenshots, attach them to your message using the “Choose File” button
-                                    below.
+                                <p>
+                                    All content on our various platforms is the intellectual property of Surkhi and cannot 
+                                    be reproduced anywhere without attribution otherwise that would be considered copyright 
+                                    infringement
+
                                 </p>
                             </div>
                             <div className="mt-5 mb-5">

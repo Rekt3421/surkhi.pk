@@ -23,8 +23,8 @@ const Footer = () => {
                                     <ul className="list-unstyled">
                                         <li><Link to="/">About Surkhi</Link></li>
                                         <li><Link to="/support-us">Support Us</Link></li>
-                                        <li><Link to="/insights">Terms of Use</Link></li>
-                                        <li><Link to="/submit-topic">Privacy Policy</Link></li>
+                                        <li><Link to="/terms-of-use">Terms of Use</Link></li>
+                                        <li><Link to="/privacy-policy">Privacy Policy</Link></li>
                                     </ul>
                                 </div>
                                 <div className="footer-item-navigate">
@@ -33,14 +33,14 @@ const Footer = () => {
                                         <li><Link to="/">Home</Link></li>
                                         <li><Link to="/services">Services</Link></li>
                                         <li><Link to="/insights">Insights</Link></li>
-                                        <li><Link to="/submit-topic">Submit a Topic</Link></li>
+                                        <li><Link to="/contact">Submit a Topic</Link></li>
                                     </ul>
                                 </div>
                                 <div className="footer-item-coming-soon">
                                 <h6>Coming Soon</h6>
                                     <ul className="list-unstyled">
-                                        <li>Membership</li>
-                                        <li>Insights</li>
+                                        <li><Link>Membership</Link></li>
+                                        <li><Link>Insights</Link></li>
                                         
                                     </ul>
                                 </div>

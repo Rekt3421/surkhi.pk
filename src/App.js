@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Home from './components/Home'
-import SubmitTopic from './components/submit-topic';
+import Contact from './components/contact';
 import FAQs from './components/faq';
 import FaqComponents from './components/faq-topics/faq-topics';
 import SupportPage from './components/support-us';
@@ -18,7 +18,7 @@ class App extends React.Component{
             <ScrollToTop>
               {/* Defing all the necessary routes here */}
               <Route path="/" exact component={Home} />
-              <Route path="/submit-topic" component={SubmitTopic} />
+              <Route path="/contact" component={Contact} />
               <Route path="/services" component={Services} />
               <Route path="/support-us" component={SupportPage} />
               <Route path="/faqs" exact component={FAQs} />
