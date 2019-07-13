@@ -192,9 +192,9 @@ const AboutSurkhiMeter = () => {
                                 <p className="mb-3">Surkhi Meter is a tool akin to a Likert Scale which helps to visualize the honesty rating of 
                                     news pieces which are run through our validation engine. The scale has five levels namely: 
                                 </p>
-                                <table class="surkhimeter-about table table-bordered">
+                                <table class="surkhimeter-about table table-bordered table-dark">
                                     <thead>
-                                        <tr className="kharasuch">
+                                        <tr>
                                         <th scope="col">Verdict</th>
                                         <th scope="col">Explanation</th>
                                         </tr>
@@ -383,13 +383,22 @@ const SubscribeToNewsLetter = () => {
                         <div className="col-md-8 pl-0 pr-0">
                             <h5 className="faq-label">Answer</h5>
                             <div className="text-section">
-                                <p>Due to the volume of correspondence we receive, we regret that we may not be able to respond 
-                                    personally.
+                                <p>
+                                    There are two ways you can do that. You can scroll down to the bottom of the app and subscribe by
+                                    entering your email in the widget. Second way is more flexible in which you can subscribe to
+                                    two different types of newsletter of your choice: </p>
+                                <p>
+                                    1) Featured posts on Surkhi or,
+                                    <br />
+                                    2) Top 10 most viewed posts of the week
                                 </p>
-                                <p>When sending tips, links to articles, social media posts, or images, please provide as much detail 
-                                    as possible, including when and where you first came across the item(s) in question. If you have 
-                                    supporting images or screenshots, attach them to your message using the “Choose File” button
-                                    below.
+                                <p>
+                                    You can go to the <Link to='/newsletter'>Newsletter page</Link> to subscribe to your choice of Surkhi posts. 
+                                </p>
+                                <p>
+                                    Regardless of your subscription choice, we promise not to be spammy. But in the case you want to unsubscribe,
+                                    you can do so through the newsletter page or an easier way would be to click on the unsubscribe button in
+                                    email you get from us.
                                 </p>
                             </div>
                             <div className="mt-5 mb-5">
@@ -424,9 +433,18 @@ const ReproducingContent = () => {
                             <div className="text-section">
                                 <p>
                                     All content on our various platforms is the intellectual property of Surkhi and cannot 
-                                    be reproduced anywhere without attribution otherwise that would be considered copyright 
-                                    infringement
-
+                                    be reproduced anywhere without attribution. Proceeding to do that would be considered copyright 
+                                    infringement, even if your website is an NGO or is non-commercial. 
+                                </p>
+                                <p>
+                                    Our reporters work super hard to bring our audience precise and error-free content. Copying our 
+                                    content devalues are attempt to generate revenues which is necessary for us to continue this app
+                                    as a free resource. 
+                                </p>
+                                <p>
+                                    However, you can definitely use our links as citations or link them to your article/blog posts. You 
+                                    are also allowed to share the links within your social media groups but strictly cannot copy the text
+                                    without giving proper credit or pasting them in your blog posts without quotes.
                                 </p>
                             </div>
                             <div className="mt-5 mb-5">
@@ -459,14 +477,9 @@ const DisplayingLinksOnWebsite = () => {
                         <div className="col-md-8 pl-0 pr-0">
                             <h5 className="faq-label">Answer</h5>
                             <div className="text-section">
-                                <p>Due to the volume of correspondence we receive, we regret that we may not be able to respond 
-                                    personally.
-                                </p>
-                                <p>When sending tips, links to articles, social media posts, or images, please provide as much detail 
-                                    as possible, including when and where you first came across the item(s) in question. If you have 
-                                    supporting images or screenshots, attach them to your message using the “Choose File” button
-                                    below.
-                                </p>
+                                <p>You are absolutely allowed to share or attach a link of our site to your website. Copying the 
+                                    contents of our website blatantly  would be considered as copyright infringement. 
+                                </p>                                
                             </div>
                             <div className="mt-5 mb-5">
                                 <button type="button "className="btn Faq-button"><Link to="/faqs">Go back to FAQs</Link></button>
@@ -498,13 +511,13 @@ const AllowingCommentsOnPosts = () => {
                         <div className="col-md-8 pl-0 pr-0">
                             <h5 className="faq-label">Answer</h5>
                             <div className="text-section">
-                                <p>Due to the volume of correspondence we receive, we regret that we may not be able to respond 
-                                    personally.
+                                <p> The comment section is considered a place of activity for people who diligently embrace technology and love to share 
+                                    their two cents about every topic they get a hand on. Therefore it often happens that anonymous trolls start posting
+                                    unnecessary and unwarranted comments that require moderation. Instead of investing in hosting and moderating 
+                                    comments, we prefer to focus on what we do best: fact-checking.
                                 </p>
-                                <p>When sending tips, links to articles, social media posts, or images, please provide as much detail 
-                                    as possible, including when and where you first came across the item(s) in question. If you have 
-                                    supporting images or screenshots, attach them to your message using the “Choose File” button
-                                    below.
+                                <p>If you want to commend us, rebuke us or give us constructive feedback on the work we are doing, 
+                                    go to our <Link to="https://www.facebook.com/SURKHI.pk/">Facebook page</Link>, or <Link to="https://twitter.com/SURKHIpk">Tweet</Link> to us directly. We would be happy to hear from the audience!
                                 </p>
                             </div>
                             <div className="mt-5 mb-5">

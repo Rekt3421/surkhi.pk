@@ -469,8 +469,13 @@ $color-snow: #e5e5e5;
 .contact-form{
     margin-bottom: 200px; 
     width:60%;
-    .text-section >  p{
+    .text-section {
+        p{
             font-size:22px;
+        }
+        a{
+            color:black;
+        }
     }
     .formEmailArea{
         height:50px;
@@ -509,8 +514,15 @@ $color-snow: #e5e5e5;
 
 .support-wrapper{
     margin-bottom: 200px; 
-    .text-section >  p{
-            font-size:18px;
+    .text-section {
+            p{
+                font-size:18px;
+            }
+            a{
+                color:#cc0000;
+                text-decoration: underline;
+            }
+            
     }
     .formEmailArea{
         height:50px;
