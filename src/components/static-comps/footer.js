@@ -22,7 +22,7 @@ const Footer = () => {
                                     <h6>Company</h6>
                                     <ul className="list-unstyled">
                                         <li><Link to="/">About Surkhi</Link></li>
-                                        <li><Link to="/services">Support Us</Link></li>
+                                        <li><Link to="/support-us">Support Us</Link></li>
                                         <li><Link to="/insights">Terms of Use</Link></li>
                                         <li><Link to="/submit-topic">Privacy Policy</Link></li>
                                     </ul>
@@ -37,7 +37,7 @@ const Footer = () => {
                                     </ul>
                                 </div>
                                 <div className="footer-item-coming-soon">
-                                <h6>Company</h6>
+                                <h6>Coming Soon</h6>
                                     <ul className="list-unstyled">
                                         <li>Membership</li>
                                         <li>Insights</li>

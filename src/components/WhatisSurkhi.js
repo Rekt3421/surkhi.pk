@@ -15,6 +15,7 @@ class SurkhiAboutWidget extends Component {
     }
 
     render(){
+        let match = this.props.match;
         return(
             <Aux>
                 <div className="surkhiAbout-widget">
@@ -72,7 +73,7 @@ class SurkhiAboutWidget extends Component {
                                         <h3 className="card-title">We bring you fact-checking and original, in-depth reporting.</h3>
                                         <div className="media-list">
                                             <article className="media-wrapper">
-                                                <a className="media post-197626 news type-news status-publish has-post-thumbnail hentry tag-editors-picks news_category-uspolitics" href="https://www.snopes.com/news/2019/05/26/fb-islamophobic-network-down/">
+                                                <a className="media news type-news status-publish has-post-thumbnail" href="https://www.snopes.com/news/2019/05/26/fb-islamophobic-network-down/">
                                                     <figure className="featured-media">
                                                         <img src="https://www.snopes.com/tachyon/2019/05/kullberg-down.png?resize=865,452" 
                                                             srcSet="https://www.snopes.com/tachyon/2019/05/kullberg-down.png?resize=80,80&quality=65 80w,
@@ -101,7 +102,7 @@ class SurkhiAboutWidget extends Component {
                                     <div className="support-us">
                                         <h3 className="card-title">We fight misinformation — with your support.</h3>
     
-                                        <p className="card-text">For more than two decades Snopes.com has reliably reported the facts at no charge to readers, but our work is far from free to produce. Please make a contribution today.</p>
+                                        <p className="card-text">Surkhi has been reliably reporting hard facts for more than For more than two decades Snopes.com has reliably reported the facts at no charge to readers, but our work is far from free to produce. Please make a contribution today.</p>
                                         <div className="btn-wrapper">
                                             <a className="btn-paypal" target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=BPS6PDAXAHRQJ">Give with PayPal</a>
                                         </div>
@@ -113,30 +114,30 @@ class SurkhiAboutWidget extends Component {
                                         <h3 className="card-title">Frequently Asked Questions</h3>
                                         <div className="media-list">		
                                             <article className="media-wrapper">
-                                                <a className="media post-167441 faq type-faq status-publish hentry faq_category-editorial-process" href="https://www.snopes.com/faq/may-submit-questions-images-fact-checked/">
+                                                <a className="media faq type-faq status-publish" href="https://www.snopes.com/faq/may-submit-questions-images-fact-checked/">
                                                     <div className="media-body-wrapper">
                                                         <div className="media-body">
-                                                            <h5 className="title">May I submit items to be fact-checked?</h5>						
+                                                            <h5 className="title"><Link to='faqs/submit-topic-to-fact-check'>May I submit items to be fact-checked?</Link></h5>						
                                                         </div>
                                                     </div>
                                                 </a>
                                             </article>
     
                                             <article className="media-wrapper">
-                                                <a className="media post-167449 faq type-faq status-publish hentry faq_category-more-about-snopes" href="https://www.snopes.com/faq/whats-deal-rating-system/">
+                                                <a className="media faq type-faq status-publish" href="https://www.snopes.com/faq/whats-deal-rating-system/">
                                                     <div className="media-body-wrapper">
                                                         <div className="media-body">
-                                                            <h5 className="title">What’s the deal with your rating system?</h5>
+                                                            <h5 className="title"><Link to={'faqs/about-surkhi-meter'}>What’s the deal with your rating system?</Link></h5>
                                                         </div>
                                                     </div>
                                                 </a>
                                             </article>
     
                                             <article className="media-wrapper">
-                                                <a className="media post-167437 faq type-faq status-publish hentry faq_category-more-about-snopes" href="https://www.snopes.com/faq/makes-snopes-reliable-resource/">
+                                                <a className="media faq type-faq status-publish" href="https://www.snopes.com/faq/makes-snopes-reliable-resource/">
                                                     <div className="media-body-wrapper">
                                                         <div className="media-body">
-                                                            <h5 className="title">What makes Snopes a reliable resource?</h5>
+                                                            <h5 className="title"><Link to={'faqs/is-surkhi-partisan'}>Is Surkhi partisan in its stance towards political parties?</Link></h5>
                                                         </div>
                                                     </div>
                                                 </a>
@@ -144,29 +145,29 @@ class SurkhiAboutWidget extends Component {
     
     
                                             <article className="media-wrapper">
-                                                <a className="media post-159614 faq type-faq status-publish hentry faq_category-more-about-snopes" href="https://www.snopes.com/faq/what-are-snopes/">
+                                                <a className="media faq type-faq status-publish" href="https://www.snopes.com/faq/what-are-snopes/">
                                                     <div className="media-body-wrapper">
                                                         <div className="media-body">
-                                                            <h5 className="title">What does ‘snopes’ mean?</h5>
+                                                            <h5 className="title"><Link to={'faqs/surkhi-definition'}>What does 'Surkhi’ mean?</Link> </h5>
                                                         </div>
                                                     </div>
                                                 </a>
                                             </article>
     
                                             <article className="media-wrapper">
-                                                <a className="media post-161277 faq type-faq status-publish hentry faq_category-technical-questions" href="https://www.snopes.com/faq/how-do-i-subscribe-to-your-newletter/">
+                                                <Link className="media faq type-faq status-publish" to="/faq/how-do-i-subscribe-to-your-newletter/">
                                                     <div className="media-body-wrapper">
                                                         <div className="media-body">
-                                                            <h5 className="title">How do I subscribe to your newsletter?</h5>
+                                                            <h5 className="title"><Link to={'faqs/subscribe-to-newsletter'}>How do I subscribe to your newsletter?</Link></h5>
                                                         </div>
                                                     </div>
-                                                </a>
+                                                </Link>
                                             </article>
                                         </div>  
-                                        <a href="https://www.snopes.com/faq/" className="btn btn-link">
+                                        <Link to="/faqs" className="btn btn-link">
                                             See All FAQs
-                                            <svg className="svg-inline--fa fa-angle-right fa-w-8" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" data-fa-i2svg=""><path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"></path></svg>	
-                                        </a>
+                                            <svg className="svg-inline--fa fa-angle-right fa-w-8" aria-hidden="true" focusable="false" data-prefix="fas"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" data-fa-i2svg=""><path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"></path></svg>	
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
