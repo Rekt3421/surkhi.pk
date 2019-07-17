@@ -6,19 +6,8 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-<<<<<<< HEAD
-// Apollo and Graphql
 import Client from './client/client'
 import {ApolloProvider} from "react-apollo";
-
-ReactDOM.render(<ApolloProvider client={Client}>
-        <App />
-    </ApolloProvider>
-    , document.getElementById('root'));
-=======
-import Client from './client/client'
-import {ApolloProvider} from "react-apollo";
->>>>>>> frontEnd
 
 ReactDOM.render(<ApolloProvider client={Client}>   <App />  </ApolloProvider>, document.getElementById('root'));
 // If you want your app to work offline and load faster, you can change
