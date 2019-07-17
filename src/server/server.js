@@ -9,7 +9,19 @@ const PostModel = require('./models/Post');
 var app = express();
 app.use(cors())
 
-Mongoose.connect('mongodb://localhost/test', {useNewUrlParser: true});
+//Mongoose.connect('mongodb://localhost/test', {useNewUrlParser: true});
+const dbName = 'heroku_gf80xbqf';
+const dbUser = 'adminuser';
+const dbPassword = 'surkhi12345';
+Mongoose.connect(`mongodb://${dbUser}:${dbPassword}@ds251877.mlab.com:51877/${dbName}`, {
+    useNewUrlParser: true
+}, function(error){
+        if(error)
+            console.log(error);
+        else
+            console.log("connected to database");
+});
+
 
 let last_key = 0
 let loaded = false
@@ -49,7 +61,7 @@ const resolvers = {
     },
 
     Mutation: {
-        addPost: async (_, {title, category, summary, image, verdict}) => {
+        addPost: async (_, {postTitle, category, postSummary, image, verdict}) => {
             if (!loaded){
                 let lastPost = await PostModel.find({}).sort({key:-1}).limit(1)
                 loaded = !loaded
@@ -67,7 +79,7 @@ const resolvers = {
             
             await storeUpload({readStream, path})
             
-            const p = {'key': last_key++, 'title': title, 'category': category, 'summary': summary, 'image': fileNameWrite, 'verdict': verdict+'.png'}
+            const p = {'key': last_key++, 'postTitle': postTitle, 'category': category, 'postSummary': postSummary, 'image': fileNameWrite, 'verdict': verdict+'.png'}
             const postModel = new PostModel(p)
             await postModel.save()
         }
