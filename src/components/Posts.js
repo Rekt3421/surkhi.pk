@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import Post from './Post';
 
 import {Query} from "react-apollo";
@@ -22,7 +22,7 @@ const Posts = () => {
         <React.Fragment>
             <Query query={GET_POSTS}>
                 {({loading, error, data}) =>{
-                    if (loading) return "Loading...";
+                    if (loading) return `${loading.message}`;
                     if (error) return `Error! ${error.message}`;
                     let postArray = data['posts'].reverse()
                     console.log(postArray);
