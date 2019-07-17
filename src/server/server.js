@@ -90,7 +90,7 @@ const server = new ApolloServer({
     typeDefs,
     resolvers,
     playground: {
-        endpoint: `http://localhost:4000/graphql`,
+        endpoint: `https://surkhi-beta.herokuapp.com/graphql`,
         settings: {
         'editor.theme': 'dark'
         }
