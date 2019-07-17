@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 
+<<<<<<< HEAD
 var PostSchema = new mongoose.Schema({
     key: Number,
     title: String,
@@ -11,3 +12,15 @@ var PostSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('Post', PostSchema);
+=======
+let PostSchema = new mongoose.Schema({
+    key: Number,
+    postTitle: String,
+    postSummary: String,
+    verdict: String,
+    category: [String],
+    image: String
+});
+
+module.exports = mongoose.model('Post', PostSchema)
+>>>>>>> frontEnd

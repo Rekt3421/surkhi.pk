@@ -5,7 +5,7 @@ const fs = require('fs');
 const cors = require('cors');
 const PostModel = require('./models/Post');
 
-var app = express()
+var app = express();
 app.use(cors())
 
 Mongoose.connect('mongodb://localhost/test', {useNewUrlParser: true});
@@ -13,39 +13,40 @@ Mongoose.connect('mongodb://localhost/test', {useNewUrlParser: true});
 let last_key = 0
 let loaded = false
 
+<<<<<<< HEAD
 const typeDefs = gql`
+=======
+let typeDefs = gql`
+>>>>>>> origin/master
     
     type Post {
         key: Int
-        title: String
-        summary: String
+        postTitle: String
+        postSummary: String
         verdict: String
         category: [String]
         image: String
     }
-
     type Query {
         posts: [Post]
     }
-
     type Mutation {
-        addPost(title: String!, category: [String!]!, summary: String!, image: Upload!, verdict: String!): Post
+        addPost(postTitle: String!, category: [String!]!, postSummary: String!, image: Upload!, verdict: String!): Post
     }
-
 `;
 
 const storeUpload = ({ readStream, path }) =>
-  new Promise((resolve, reject) =>
-    readStream
-      .pipe(fs.createWriteStream(path))
-      .on("finish", () => resolve())
-      .on("error", reject)
-  );
+    new Promise((resolve, reject) =>
+        readStream
+        .pipe(fs.createWriteStream(path))
+        .on("finish", () => resolve())
+        .on("error", reject)
+    );
 
 const resolvers = {
     Query: {
         posts: async () =>{ 
-            posts = await PostModel.find().exec()
+            let posts = await PostModel.find().exec()
             return posts
         },
     },
@@ -53,19 +54,34 @@ const resolvers = {
     Mutation: {
         addPost: async (_, {title, category, summary, image, verdict}) => {
             if (!loaded){
+<<<<<<< HEAD
                 lastPost = await PostModel.find({}).sort({key:-1}).limit(1)
                 loaded = !loaded
                 if (lastPost!=0){
+=======
+                let lastPost = await PostModel.find({}).sort({key:-1}).limit(1)
+                loaded = !loaded
+                if (lastPost != 0){
+>>>>>>> origin/master
                     last_key = lastPost[0].key+1
                     console.log(last_key)
                 }
             }
+<<<<<<< HEAD
             imgFile = await image
             var re = /(?:\.([^.]+))?$/;
             ext = re.exec(imgFile.filename)[1] // extension of file
             fileNameWrite = 'img'+last_key+'.'+ext
             path = './server-images/'+fileNameWrite
             readStream = imgFile.createReadStream(imgFile.filename)
+=======
+            let imgFile = await image
+            var re = /(?:\.([^.]+))?$/;
+            let ext = re.exec(imgFile.filename)[1] // extension of file
+            let fileNameWrite = 'img'+last_key+'.'+ext
+            let path = './server-images/'+fileNameWrite
+            let readStream = imgFile.createReadStream(imgFile.filename)
+>>>>>>> origin/master
             
             await storeUpload({readStream, path})
             
@@ -82,13 +98,17 @@ const server = new ApolloServer({
     playground: {
         endpoint: `http://localhost:4000/graphql`,
         settings: {
-          'editor.theme': 'dark'
+        'editor.theme': 'dark'
         }
-      }
+    }
 });
 
 server.applyMiddleware({
     app: app
 })
 
+<<<<<<< HEAD
 app.listen(4000 , ()=> {console.log("App started")})
+=======
+app.listen(4000 , ()=> {console.log("App started")})
+>>>>>>> origin/master
