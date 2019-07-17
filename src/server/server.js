@@ -85,8 +85,9 @@ const server = new ApolloServer({
     }
 });
 
-server.applyMiddleware({
-    app: app
-})
+server.applyMiddleware({ app: app })
 
-app.listen(4000 , ()=> {console.log("App started")})
+const PORT = process.env.PORT || 4000;
+
+app.listen(PORT, ()=> {console.log("App started")})
+

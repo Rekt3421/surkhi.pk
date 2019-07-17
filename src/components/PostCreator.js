@@ -7,8 +7,8 @@ import {Mutation} from "react-apollo";
 import gql from "graphql-tag";
 
 const ADD_POSTS = gql`
-    mutation AddPost($title: String!, $category: [String!]!, $summary: String!, $image: Upload!, $verdict: String!){
-        addPost(postTitle: $title, category: $category, postSummary: $summary, image: $image, verdict: $verdict){
+    mutation AddPost($postTitle: String!, $category: [String!]!, $postSummary: String!, $image: Upload!, $verdict: String!){
+        addPost(postTitle: $postTitle, category: $category, postSummary: $postSummary, image: $image, verdict: $verdict){
             postTitle
             category
             postSummary
@@ -117,9 +117,9 @@ class PostCreator extends Component {
                                 id = 'post-form' 
                                 onSubmit={e=>{
                                     e.preventDefault()
-                                    addPost({variables: {title: titleInput.value,
+                                    addPost({variables: {postTitle: titleInput.value,
                                                         category: categoryInput,
-                                                        summary: summaryInput.value,
+                                                        postSummary: summaryInput.value,
                                                         image: imageInput,
                                                         verdict: verdictInput.value}})
                                     titleInput.value = ""
