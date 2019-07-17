@@ -1,6 +1,5 @@
 const {ApolloServer, gql} = require('apollo-server-express');
 const express = require('express');
-const expressGraphQL = require('express-graphql');
 const Mongoose = require('mongoose');
 const fs = require('fs');
 const cors = require('cors');
@@ -12,6 +11,8 @@ app.use(cors())
 Mongoose.connect('mongodb://localhost/test', {useNewUrlParser: true});
 
 let last_key = 0
+let loaded = false
+
 const typeDefs = gql`
     
     type Post {
@@ -51,10 +52,18 @@ const resolvers = {
 
     Mutation: {
         addPost: async (_, {title, category, summary, image, verdict}) => {
+            if (!loaded){
+                lastPost = await PostModel.find({}).sort({key:-1}).limit(1)
+                loaded = !loaded
+                if (lastPost!=0){
+                    last_key = lastPost[0].key+1
+                    console.log(last_key)
+                }
+            }
             imgFile = await image
             var re = /(?:\.([^.]+))?$/;
             ext = re.exec(imgFile.filename)[1] // extension of file
-            fileNameWrite = 'img'+last_key+ext
+            fileNameWrite = 'img'+last_key+'.'+ext
             path = './server-images/'+fileNameWrite
             readStream = imgFile.createReadStream(imgFile.filename)
             
@@ -62,7 +71,7 @@ const resolvers = {
             
             const p = {'key': last_key++, 'title': title, 'category': category, 'summary': summary, 'image': fileNameWrite, 'verdict': verdict+'.png'}
             const postModel = new PostModel(p)
-            const newPost = await postModel.save()
+            await postModel.save()
         }
     }
 }
@@ -83,24 +92,3 @@ server.applyMiddleware({
 })
 
 app.listen(4000 , ()=> {console.log("App started")})
-
-
-/*const posts = [
-    {
-        key: 0,
-        title: 'PROTESTORS PROTEST PROTESTING PROTESTORS',
-        summary: 'Protesting Protestors Protest Protestors Protesting Protestors',
-        verdict: 'FullJhoot.png',
-        category: 'Political',
-        image: 'F.png',
-    },
-    {
-        key: 1,
-        title: 'Sony Reports Loss',
-        summary: 'This company claims a loss has striken it. LOL',
-        verdict: 'Mumkin.png',
-        category: 'Entertainment',
-        image: 'logo.svg',
-    }
-]
-*/

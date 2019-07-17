@@ -39,9 +39,11 @@
 }
 
 .verdict {
-	float:right;
-	width: 140px;
-	height: 153.352px;
+    float:right;
+    img{
+        width: 300px;
+        height: auto;
+    }
 }
 
 .headline {
