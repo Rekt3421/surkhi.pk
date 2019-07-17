@@ -12,6 +12,8 @@ app.use(cors())
 Mongoose.connect('mongodb://localhost/test', {useNewUrlParser: true});
 
 let last_key = 0
+let loaded = false
+
 let typeDefs = gql`
     
     type Post {
@@ -47,16 +49,26 @@ const resolvers = {
     },
 
     Mutation: {
-        addPost: async (_, {postTitle, category, postSummary, image, verdict}) => {
+        addPost: async (_, {title, category, summary, image, verdict}) => {
+            if (!loaded){
+                let lastPost = await PostModel.find({}).sort({key:-1}).limit(1)
+                loaded = !loaded
+                if (lastPost != 0){
+                    last_key = lastPost[0].key+1
+                    console.log(last_key)
+                }
+            }
             let imgFile = await image
             var re = /(?:\.([^.]+))?$/;
             let ext = re.exec(imgFile.filename)[1] // extension of file
             let fileNameWrite = 'img'+last_key+'.'+ext
-            let path = '.\\server-images\\'+fileNameWrite
+            let path = './server-images/'+fileNameWrite
             let readStream = imgFile.createReadStream(imgFile.filename)
+            
             await storeUpload({readStream, path})
-            let p = {'key': last_key++, 'postTitle': postTitle, 'category': category, 'postSummary': postSummary, 'image': fileNameWrite, 'verdict': verdict+'.png'}
-            let postModel = new PostModel(p)
+            
+            const p = {'key': last_key++, 'title': title, 'category': category, 'summary': summary, 'image': fileNameWrite, 'verdict': verdict+'.png'}
+            const postModel = new PostModel(p)
             await postModel.save()
         }
     }
