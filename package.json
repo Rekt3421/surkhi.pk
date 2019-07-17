@@ -9,12 +9,20 @@
     "@fortawesome/react-fontawesome": "^0.1.4",
     "apollo-cache-inmemory": "^1.6.2",
     "apollo-client": "^2.6.3",
+<<<<<<< HEAD
     "apollo-server-express": "^2.6.9",
     "apollo-upload-client": "^11.0.0",
     "bootstrap": "^4.3.1",
     "express-graphql": "^0.8.0",
     "graphql": "^14.4.2",
     "graphql-tag": "^2.10.1",
+=======
+    "apollo-server-express": "^2.7.0",
+    "apollo-upload-client": "^11.0.0",
+    "bootstrap": "^4.3.1",
+    "express-graphql": "^0.9.0",
+    "graphql": "^14.4.1",
+>>>>>>> frontEnd
     "jquery": "^3.4.1",
     "mongodb": "^3.2.7",
     "mongoose": "^5.6.4",

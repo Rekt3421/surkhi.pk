@@ -1,23 +1,21 @@
 import React, {Component} from 'react';
 import Aux from '../hoc/Auxiliary';
-import TagsInput from 'react-tagsinput'
-import ReactTags from 'react-tag-autocomplete';
 import '../assets/stylesheets/post.scss';
 
 // Apollo and Graphql
-import {Query, Mutation} from "react-apollo";
+import {Mutation} from "react-apollo";
 import gql from "graphql-tag";
 
 const ADD_POSTS = gql`
-  mutation AddPost($title: String!, $category: [String!]!, $summary: String!, $image: Upload!, $verdict: String!){
-    addPost(title: $title, category: $category, summary: $summary, image: $image, verdict: $verdict){
-        title
-        category
-        summary
-        image
-        verdict
+    mutation AddPost($title: String!, $category: [String!]!, $summary: String!, $image: Upload!, $verdict: String!){
+        addPost(postTitle: $title, category: $category, postSummary: $summary, image: $image, verdict: $verdict){
+            postTitle
+            category
+            postSummary
+            image
+            verdict
+        }
     }
-  }
 `;
 
 class PostCreator extends Component {
@@ -120,12 +118,11 @@ class PostCreator extends Component {
                                 onSubmit={e=>{
                                     e.preventDefault()
                                     addPost({variables: {title: titleInput.value,
-                                                        category: categoryInput.value,
+                                                        category: categoryInput,
                                                         summary: summaryInput.value,
                                                         image: imageInput,
                                                         verdict: verdictInput.value}})
                                     titleInput.value = ""
-                                    categoryInput.value = ""
                                     summaryInput.value = ""
                                     verdictInput.value = ""
                             }}>
@@ -149,9 +146,12 @@ class PostCreator extends Component {
                                             <div className="input-group">
                                                 <div className="input-group-prepend">
                                                     <label className="input-group-text" for="inputGroupSelect01">Category</label>
-                                                    <input 
-                                                        ref = {node=>{
-                                                            categoryInput = node
+                                                    <TagInput 
+                                                        onTagChange={this.handleTagChange}
+                                                        tags = {this.state.tags}
+                                                        name = "postCategories"
+                                                        ref = {() =>{
+                                                            categoryInput = this.state.tags
                                                         }}
                                                     />
                                                 </div>
