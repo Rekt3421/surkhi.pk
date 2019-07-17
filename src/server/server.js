@@ -1,0 +1,83 @@
+const {ApolloServer, gql} = require('apollo-server-express');
+const express = require('express');
+const expressGraphQL = require('express-graphql');
+const Mongoose = require('mongoose');
+const fs = require('fs');
+const cors = require('cors');
+const PostModel = require('./models/Post');
+
+var app = express();
+app.use(cors())
+
+Mongoose.connect('mongodb://localhost/test', {useNewUrlParser: true});
+
+let last_key = 0
+let typeDefs = gql`
+    
+    type Post {
+        key: Int
+        postTitle: String
+        postSummary: String
+        verdict: String
+        category: [String]
+        image: String
+    }
+    type Query {
+        posts: [Post]
+    }
+    type Mutation {
+        addPost(postTitle: String!, category: [String!]!, postSummary: String!, image: Upload!, verdict: String!): Post
+    }
+`;
+
+const storeUpload = ({ readStream, path }) =>
+    new Promise((resolve, reject) =>
+        readStream
+        .pipe(fs.createWriteStream(path))
+        .on("finish", () => resolve())
+        .on("error", reject)
+    );
+
+const resolvers = {
+    Query: {
+        posts: async () =>{ 
+            let posts = await PostModel.find().exec()
+            console.log(posts);
+            return posts
+        },
+    },
+
+    Mutation: {
+        addPost: async (_, {postTitle, category, postSummary, image, verdict}) => {
+            let imgFile = await image
+            var re = /(?:\.([^.]+))?$/;
+            let ext = re.exec(imgFile.filename)[1] // extension of file
+            let fileNameWrite = 'img'+last_key+'.'+ext
+            let path = '.\\server-images\\'+fileNameWrite
+            let readStream = imgFile.createReadStream(imgFile.filename)
+            
+            await storeUpload({readStream, path})
+            
+            let p = {'key': last_key++, 'postTitle': postTitle, 'category': category, 'postSummary': postSummary, 'image': fileNameWrite, 'verdict': verdict+'.png'}
+            let postModel = new PostModel(p)
+            await postModel.save()
+        }
+    }
+}
+
+const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+    playground: {
+        endpoint: `http://localhost:4000/graphql`,
+        settings: {
+        'editor.theme': 'dark'
+        }
+    }
+});
+
+server.applyMiddleware({
+    app: app
+})
+
+app.listen(4000 , ()=> {console.log("App started")})

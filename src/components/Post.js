@@ -1,28 +1,28 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import '../assets/stylesheets/App.scss';
 
-class Post extends Component{
-    render(){
-        return(
-            <div className="container individual-post" key={this.props.key}>
+const Post = (props) => {
+    return(
+        <div>
+            <div className="container individual-post" key={props.key}>
                 <Link to='/posts/:postId'>
                     <div className="row h-100">
-                    <div className="col my-auto">
-                        <div className="pic mx-auto"><img src={this.props.post_image} width="80" height="80" alt=""/></div>
-                    </div>
-                    <div className="col-6 my-auto">
-                        <div className="headline">{this.props.headline}</div>
-                        <div className="description">{this.props.description}</div>
-                    </div>
-                    <div className="col my-auto">
-                        <div className="verdict mx-auto"><img src={this.props.verdict} width="140" height="140" alt=""/></div>
-                    </div>
+                        <div className="col-3 my-auto">
+                            <div className="pic mx-auto"><img src={props.image} width="100" height="100" alt=""/></div>
+                        </div>
+                        <div className="col-6 my-auto">
+                            <div className="headline">{props.postTitle}</div>
+                            <div className="description">{props.postSummary}</div>
+                        </div>
+                        <div className="col-3 my-auto verdict">
+                            <img src={props.verdict} alt=""/>
+                        </div>
                     </div>
                 </Link>
             </div>
-        );
-    }
+        </div>
+    );
 }
 
 export default Post;

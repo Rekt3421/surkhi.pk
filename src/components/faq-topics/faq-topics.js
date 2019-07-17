@@ -25,7 +25,8 @@ const SubmitTopicQuestion = () => {
                                 <h5 className="faq-label">Answer</h5>
                                 <div className="text-section">
                                     <p>Absolutely! If you feel there is a topic that is getting alot of notice and is worth reporting, send us 
-                                        by clicking on the "Submit a Topic" button above in the menu.
+                                        by clicking on the "Submit a Topic" button above in the menu or simply <Link to="/contact"> click 
+                                        here</Link>.
                                     </p>
                                     <p>When sending a topic, make sure you attach appropriate links to articles, social media posts, or images. Please provide as
                                         much detail as possible, including when and where you first came across the item(s) in question. If you have supporting images 

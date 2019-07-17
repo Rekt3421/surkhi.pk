@@ -1,8 +1,22 @@
 import React, {Component} from 'react';
 import Aux from '../hoc/Auxiliary';
-import TagsInput from 'react-tagsinput'
-import ReactTags from 'react-tag-autocomplete';
 import '../assets/stylesheets/post.scss';
+
+// Apollo and Graphql
+import {Mutation} from "react-apollo";
+import gql from "graphql-tag";
+
+const ADD_POSTS = gql`
+    mutation AddPost($title: String!, $category: [String!]!, $summary: String!, $image: Upload!, $verdict: String!){
+        addPost(postTitle: $title, category: $category, postSummary: $summary, image: $image, verdict: $verdict){
+            postTitle
+            category
+            postSummary
+            image
+            verdict
+        }
+    }
+`;
 
 class PostCreator extends Component {
     constructor(props){
@@ -54,7 +68,17 @@ class PostCreator extends Component {
         this.setState({ password: '' }) // manually reset controlled fields ("password")
     }
 
+    fileUploadHandler = (event) =>{
+        console.log(event.target.file)
+    }
+
     render(){
+        let titleInput
+        let categoryInput
+        let summaryInput
+        let imageInput
+        let verdictInput
+
         let imageUrl = '';
         let urlChange = (e) => {
             imageUrl = e.target.value;
@@ -72,102 +96,134 @@ class PostCreator extends Component {
             }
         } 
         return(
-            <Aux>
-            <div className="container postcreator-widget">  
-                <div className="panel panel-default">
-                    <div className="panel-heading">
-                        <h3 className="panel-title">Post Creator Panel</h3>
-                    </div>
-                    <div className="panel-body">
-                    <div className="instructions"> 
-                        <p>For editorial purposes only: Please write the <strong>name</strong> and <strong>summary</strong> of the 
-                            article, then choose an appropriate <strong>image</strong> to display. Write the <strong>category</strong> of
-                            the article that it belongs to (You may choose multiple). Lastly, select the <strong>Surkhi 
-                            Rating</strong> before pressing the "Submit" button. You may choose to start over by pressing 
-                            "Reset".
-                        </p>
-                    </div>
-                    <form>
-                        <div className="row">
-                            <div className="col-sm-6"> 
-                                <div className="form-group">
-                                    <label className="control-label">Post Title</label>
-                                    <input type="text" 
-                                        className="form-control" 
-                                        placeholder="Enter first name" 
-                                        name="postTitle"
-                                        required />
-                                </div>
+            <Mutation mutation={ADD_POSTS}>
+                {addPost=>(
+                    <Aux>
+                    <div className="container postcreator-widget">  
+                        <div className="panel panel-default">
+                            <div className="panel-heading">
+                                <h3 className="panel-title">Post Creator Panel</h3>
                             </div>
-                            <div className="col-sm-6">
-                                <div className="form-group">
-                                    <label className="control-label">Select Post Category</label>
-                                    <div className="input-group">
-                                        <div className="input-group-prepend">
-                                            <label className="input-group-text" for="inputGroupSelect01">Category</label>
-                                            <TagInput 
-                                                onTagChange={this.handleTagChange}
-                                                tags = {this.state.tags}
-                                                name = "postCategories"
-                                            />
+                            <div className="panel-body">
+                            <div className="instructions"> 
+                                <p>For editorial purposes only: Please write the <strong>name</strong> and <strong>summary</strong> of the 
+                                    article, then choose an appropriate <strong>image</strong> to display. Write the <strong>category</strong> of
+                                    the article that it belongs to (You may choose multiple). Lastly, select the <strong>Surkhi 
+                                    Rating</strong> before pressing the "Submit" button. You may choose to start over by pressing 
+                                    "Reset".
+                                </p>
+                            </div>
+                            <form
+                                id = 'post-form' 
+                                onSubmit={e=>{
+                                    e.preventDefault()
+                                    addPost({variables: {title: titleInput.value,
+                                                        category: categoryInput,
+                                                        summary: summaryInput.value,
+                                                        image: imageInput,
+                                                        verdict: verdictInput.value}})
+                                    titleInput.value = ""
+                                    summaryInput.value = ""
+                                    verdictInput.value = ""
+                            }}>
+                                <div className="row">
+                                    <div className="col-sm-6"> 
+                                        <div className="form-group">
+                                            <label className="control-label">Post Title</label>
+                                            <input type="text" 
+                                                className="form-control" 
+                                                placeholder="Enter first name" 
+                                                name="postTitle"
+                                                required 
+                                                ref = {node=>{
+                                                    titleInput = node
+                                                }}/>
+                                        </div>
+                                    </div>
+                                    <div className="col-sm-6">
+                                        <div className="form-group">
+                                            <label className="control-label">Select Post Category</label>
+                                            <div className="input-group">
+                                                <div className="input-group-prepend">
+                                                    <label className="input-group-text" for="inputGroupSelect01">Category</label>
+                                                    <TagInput 
+                                                        onTagChange={this.handleTagChange}
+                                                        tags = {this.state.tags}
+                                                        name = "postCategories"
+                                                        ref = {() =>{
+                                                            categoryInput = this.state.tags
+                                                        }}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                </div>
+                                <div className="row">
+                                    <div className="col-sm-12"> 
+                                        <div className="form-group">
+                                            <label className="control-label">Post Summary</label>
+                                            <input type="textarea" className="form-control" placeholder="Enter Summary..." name="postSummary"
+                                            ref = {node=>{
+                                                summaryInput = node
+                                            }}/>
                                         </div>
                                     </div>
                                 </div>
-                            </div> 
-                        </div>
-                        <div className="row">
-                            <div className="col-sm-12"> 
-                                <div className="form-group">
-                                    <label className="control-label">Post Summary</label>
-                                    <input type="textarea" className="form-control" placeholder="Enter Summary..." name="postSummary"/>
-                                </div>
-                            </div>
-                        </div>
-            
-                        <div className="row">
-                            <div className="col-sm-6">
-                                <label className="control-label">Post Image</label>
-                                <div class="input-group">
-                                    <span class="input-group-prepend">
-                                        <span class="btn btn-default btn-file">
-                                            Browse… <input type="file" id="imgInp" onChange={urlChange}/>
-                                        </span>
-                                    </span>
-                                    <input type="text" class="form-control" value readOnly />
-                                </div>
-                            </div>
-                            <div className="col-sm-6">
-                                <label className="control-label">Select Verdict</label>
-                                <div className="input-group mb-3">
-                                    <div className="input-group-prepend">
-                                        <label className="input-group-text" for="inputGroupSelect01">Verdict</label>
+                    
+                                <div className="row">
+                                    <div className="col-sm-6">
+                                        <label className="control-label">Post Image</label>
+                                        <div class="input-group">
+                                            <span class="input-group-prepend">
+                                                <span class="btn btn-default btn-file">
+                                                    Browse… <input type="file" id="imgInp"
+                                                    onChange={({target:{files}})=>{
+                                                        imageInput = files[0]
+                                                        console.log(imageInput)
+                                                    }}/>
+                                                </span>
+                                            </span>
+                                            <input type="text" readOnly/>
+                                        </div>
                                     </div>
-                                    <select className="custom-select" id="inputGroupSelect01">
-                                        <option selected>Choose...</option>
-                                        <option value="1">Khara Such</option>
-                                        <option value="2">Such</option>
-                                        <option value="3">Mumkin</option>
-                                        <option value="4">Jhoot</option>
-                                        <option value="5">Jhootay Ka Muun Kala</option>
-                                    </select>
+                                    <div className="col-sm-6">
+                                        <label className="control-label">Select Verdict</label>
+                                        <div className="input-group mb-3">
+                                            <div className="input-group-prepend">
+                                                <label className="input-group-text" for="inputGroupSelect01">Verdict</label>
+                                            </div>
+                                            <select className="custom-select" id="inputGroupSelect01"
+                                            ref = {node=>{
+                                                verdictInput = node
+                                            }}>
+                                                <option selected>Choose...</option>
+                                                <option value="KharaSuch">Khara Such</option>
+                                                <option value="Such">Such</option>
+                                                <option value="Mumkin">Mumkin</option>
+                                                <option value="Jhoot">Jhoot</option>
+                                                <option value="FullJhoot">Jhootay Ka Muun Kala</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
-                    </form>
-                </div>
-                <div className="panel-footer">
-                    <div className="row">
-                        <div className="col-sm-12">
-                            <div className="pull-right">
-                                <button type="button" className="btn btn-danger reset" onReset={this.resetHandler}>Reset</button>
-                                <button type="button" className="btn btn-success submit" onSubmit={this.submitHandler}>Submit</button>
+                        <div className="panel-footer">
+                            <div className="row">
+                                <div className="col-sm-12">
+                                    <div className="pull-right">
+                                        <button type="button" className="btn btn-danger reset" onReset={this.resetHandler}>Reset</button>
+                                        <button type="submit" className="btn btn-success submit" form='post-form'>Submit</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        </Aux>
+                </Aux>
+                )}
+        </Mutation>
         );
     }
 
