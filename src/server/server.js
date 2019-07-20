@@ -5,8 +5,6 @@ const fs = require('fs');
 const cors = require('cors');
 const PostModel = require('./models/Post');
 
-//Mongoose.connect('mongodb://localhost/test', {useNewUrlParser: true});
-
 const connectToDB = async () =>{
     const dbName = 'heroku_gf80xbqf';
     const dbUser = 'adminuser';
@@ -90,7 +88,7 @@ const startServer = async() => {
         typeDefs,
         resolvers,
         playground: {
-            endpoint: `https://surkhi-beta.herokuapp.com`,
+            endpoint: `https://surkhi-beta.herokuapp.com/graphql`,
             settings: {
             'editor.theme': 'dark'
             }
@@ -103,7 +101,7 @@ const startServer = async() => {
     server.applyMiddleware({ app: app })
 
     const PORT = process.env.PORT || 4000;
-    console.log(process.env.PORT);
+    console.log("The Port: ", process.env.PORT);
     app.listen(PORT, ()=> {console.log("App started")})
 }
 
