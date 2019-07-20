@@ -89,11 +89,6 @@ const startServer = async() => {
 
     var app = express();
     app.use(cors())
-    // app.use(express.static('public'));
-    // app.get('*', (req, res) => {
-    //     console.log(path);
-    //     res.sendFile(path.resolve('public/index.html'));
-    // });
 
     const server = new ApolloServer({
         typeDefs,
@@ -113,7 +108,7 @@ const startServer = async() => {
         app 
     })
 
-    const PORT = process.env.PORT || 4000;
+    const PORT = process.env.REACT_APP_PORT || 4000;
     console.log("The Port: ", PORT);
     app.listen(PORT, ()=> {console.log("App started")})
 }

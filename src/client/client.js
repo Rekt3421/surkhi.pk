@@ -5,7 +5,7 @@ import { ApolloLink } from 'apollo-link';
 
 
 const app_uri = process.env.REACT_APP_GRAPHQL_URL || 'http://localhost:4000/graphql'
-
+console.log(app_uri);
 const uploadLink = createUploadLink({ uri: app_uri });
 
 const client = new ApolloClient({
