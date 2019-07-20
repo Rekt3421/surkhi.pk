@@ -3,7 +3,7 @@ import { createUploadLink } from 'apollo-upload-client'
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
 const uplink = createUploadLink({ 
-    uri: "https://surkhi-beta.herokuapp.com"
+    uri: "https://surkhi-beta.herokuapp.com/graphql"
 })
 
 const client = new ApolloClient({
