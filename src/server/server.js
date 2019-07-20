@@ -101,9 +101,9 @@ const startServer = async() => {
     });
 
 
-    
+    const graphqlPath = process.env.REACT_APP_GRAPHQL || 'graphql'
     server.applyMiddleware({ 
-        path: '/',
+        path: `/${graphqlPath}`,
         app 
     })
 
