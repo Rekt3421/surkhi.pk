@@ -8,8 +8,6 @@ import SearchBar from './SearchBar';
 import SurkhiAboutWidget from './WhatisSurkhi';
 
 // Apollo and Graphql
-import {Query} from "react-apollo";
-import gql from "graphql-tag";
 
 
 class Home extends Component{

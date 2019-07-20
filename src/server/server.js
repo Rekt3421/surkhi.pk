@@ -4,6 +4,8 @@ const Mongoose = require('mongoose');
 const fs = require('fs');
 const cors = require('cors');
 const PostModel = require('./models/Post');
+const https = require('https');
+const http = require('http');
 const path = require('path')
 
 const connectToDB = async () =>{
@@ -85,6 +87,14 @@ const startServer = async() => {
         }
     }
 
+    var app = express();
+    app.use(cors())
+    // app.use(express.static('public'));
+    // app.get('*', (req, res) => {
+    //     console.log(path);
+    //     res.sendFile(path.resolve('public/index.html'));
+    // });
+
     const server = new ApolloServer({
         typeDefs,
         resolvers,
@@ -97,12 +107,14 @@ const startServer = async() => {
     });
 
 
-    var app = express();
-    app.use(cors())
-    server.applyMiddleware({ app: app })
+    
+    server.applyMiddleware({ 
+        path: '/',
+        app 
+    })
 
     const PORT = process.env.PORT || 4000;
-    console.log("The Port: ", process.env.PORT);
+    console.log("The Port: ", PORT);
     app.listen(PORT, ()=> {console.log("App started")})
 }
 

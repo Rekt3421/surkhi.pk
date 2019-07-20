@@ -23,7 +23,11 @@ const Posts = () => {
             <Query query={GET_POSTS}>
                 {({loading, error, data}) =>{
                     if (loading) return `${loading.message}`;
-                    if (error) return `Error! ${error.message}`;
+                    if (error) {
+                        console.log(error);
+                        console.log(error.message);
+                        return `Error! ${error.message}`;
+                    }
                     let postArray = data['posts'].reverse()
                     console.log(postArray);
                     return postArray.map( post => {
