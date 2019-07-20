@@ -97,12 +97,7 @@ const startServer = async() => {
             apiKey: "service:hamza121star-5871:kyOXclZ4Iiit4D7BMpLayw",
         },
         introspection:true,
-        playground: {
-            endpoint: `/graphql`,
-            settings: {
-            'editor.theme': 'dark'
-            }
-        }
+        playground: true
     });
 
 
