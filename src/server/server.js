@@ -93,6 +93,10 @@ const startServer = async() => {
     const server = new ApolloServer({
         typeDefs,
         resolvers,
+        engine: {
+            apiKey: "service:hamza121star-5871:kyOXclZ4Iiit4D7BMpLayw",
+        },
+        introspection:true,
         playground: {
             endpoint: `/graphql`,
             settings: {
