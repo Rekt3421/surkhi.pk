@@ -4,6 +4,7 @@ const Mongoose = require('mongoose');
 const fs = require('fs');
 const cors = require('cors');
 const PostModel = require('./models/Post');
+const path = require('path')
 
 const connectToDB = async () =>{
     const dbName = 'heroku_gf80xbqf';
@@ -88,7 +89,7 @@ const startServer = async() => {
         typeDefs,
         resolvers,
         playground: {
-            endpoint: `https://surkhi-beta.herokuapp.com/graphql`,
+            endpoint: `/graphql`,
             settings: {
             'editor.theme': 'dark'
             }
