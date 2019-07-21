@@ -2,7 +2,7 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import {ApolloProvider} from "react-apollo";
 import { createUploadLink } from 'apollo-upload-client';
-import {createHttpLink} from 'apollo-link-http';
+import {createHttpLink, HttpLink} from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloLink } from 'apollo-link';
 import ApolloClient from "apollo-client";
@@ -19,11 +19,11 @@ import Services from './components/Services';
 
 
 const app_uri = process.env.REACT_APP_GRAPHQL_URL || 'http://localhost:4000/graphql'
-console.log(app_uri);
+console.log("The app uri: ", app_uri);
 const uploadLink = createUploadLink({ uri: app_uri });
-
 const client = new ApolloClient({
     link: ApolloLink.from([uploadLink]),
+    // link: new HttpLink({uri: app_uri}),
     cache: new InMemoryCache()
 });
 
