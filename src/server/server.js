@@ -9,10 +9,10 @@ const http = require('http');
 const path = require('path')
 
 const connectToDB = async () =>{
-    const dbName = 'heroku_gf80xbqf';
+    const dbName = 'heroku_n827ml81';
     const dbUser = 'adminuser';
     const dbPassword = 'surkhi12345';
-    Mongoose.connect(`mongodb://${dbUser}:${dbPassword}@ds251877.mlab.com:51877/${dbName}`, {
+    Mongoose.connect(`mongodb://${dbUser}:${dbPassword}@ds261838.mlab.com:61838/${dbName}`, {
         useNewUrlParser: true
     }, function(error){
             if(error)
