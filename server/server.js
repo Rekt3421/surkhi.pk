@@ -3,10 +3,7 @@ const express = require('express');
 const Mongoose = require('mongoose');
 const fs = require('fs');
 const cors = require('cors');
-const PostModel = require('./models/Post');
-const https = require('https');
-const http = require('http');
-const path = require('path')
+const PostModel = require('../db/models/Post');
 
 const connectToDB = async () =>{
     const dbName = 'heroku_n827ml81';
@@ -75,7 +72,7 @@ const startServer = async() => {
                 var re = /(?:\.([^.]+))?$/;
                 let ext = re.exec(imgFile.filename)[1] // extension of file
                 let fileNameWrite = 'img'+last_key+'.'+ext
-                let path = './server-images/'+fileNameWrite
+                let path = '../src/assets/server-images/'+fileNameWrite
                 let readStream = imgFile.createReadStream(imgFile.filename)
                 
                 await storeUpload({readStream, path})
@@ -89,6 +86,9 @@ const startServer = async() => {
 
     var app = express();
     app.use(cors())
+    // if (process.env.NODE_ENV === 'production') {
+    //     app.use(express.static('client/build'));
+    //   }
 
     const server = new ApolloServer({
         typeDefs,

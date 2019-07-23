@@ -35,7 +35,7 @@ const Posts = () => {
                         <Post 
                             postTitle = {post.postTitle}
                             postSummary={post.postSummary} 
-                            image = {require('../server/server-images/' + post.image)}
+                            image = {require('../assets/server-images/' + post.image)}
                             key = {post.key}
                             verdict = {require('../assets/images/surkhi-meter-images/' + post.verdict)} />
                         );
