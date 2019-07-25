@@ -31,13 +31,13 @@ const client = new ApolloClient({
 class App extends React.Component{
   render(){
     return (
-      <ApolloProvider client={client}>  
+       <ApolloProvider client={client}>  
         <React.Fragment>
           <Router>
             <Switch>
               <ScrollToTop>
                 {/* Defing all the necessary routes here */}
-                <Route path={process.env.PUBLIC_URL} exact component={Home} />
+                <Route path="/" exact component={Home} />
                 <Route path="/contact" component={Contact} />
                 <Route path="/services" component={Services} />
                 <Route path="/support-us" component={SupportPage} />
@@ -49,7 +49,7 @@ class App extends React.Component{
             </Switch>
           </Router>
         </React.Fragment>
-      </ApolloProvider>
+       </ApolloProvider>
     )
   }
 
