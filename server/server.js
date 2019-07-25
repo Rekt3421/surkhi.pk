@@ -85,7 +85,7 @@ const startServer = async() => {
     }
 
     var app = express();
-    //app.use(cors())
+    
     // if (process.env.NODE_ENV === 'production') {
     //     app.use(express.static('client/build'));
     //   }
@@ -104,9 +104,10 @@ const startServer = async() => {
     const graphqlPath = process.env.REACT_APP_GRAPHQL || 'graphql'
     server.applyMiddleware({ 
         path: `/${graphqlPath}`,
-        app 
+        app
+        
     })
-
+    app.use(cors())
     const PORT = process.env.REACT_APP_PORT || 4000;
     console.log("The Port: ", PORT);
     app.listen(PORT, ()=> {console.log("App started")})
