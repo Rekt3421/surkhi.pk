@@ -108,7 +108,7 @@ const startServer = async() => {
         
     })
     app.use(cors())
-    const PORT = process.env.REACT_APP_PORT || 4000;
+    const PORT = process.env.PORT || 4000 ;
     console.log("The Port: ", PORT);
     app.listen(PORT, ()=> {console.log("App started")})
 }
