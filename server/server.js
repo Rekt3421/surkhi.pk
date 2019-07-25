@@ -85,7 +85,7 @@ const startServer = async() => {
     }
 
     var app = express();
-    app.use(cors())
+    //app.use(cors())
     // if (process.env.NODE_ENV === 'production') {
     //     app.use(express.static('client/build'));
     //   }
