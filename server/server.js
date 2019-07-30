@@ -43,12 +43,16 @@ const startServer = async() => {
     `;
 
     const storeUpload = ({ readStream, path }) =>
+      {
+        console.log(path ," ", readStream)
         new Promise((resolve, reject) =>
             readStream
             .pipe(fs.createWriteStream(path))
             .on("finish", () => resolve())
             .on("error", reject)
-        );
+                 
+       
+       )};
 
     const resolvers = {
         Query: {
@@ -70,11 +74,11 @@ const startServer = async() => {
                 }
                 let imgFile = await image
                 var re = /(?:\.([^.]+))?$/;
+                let filename = re.exec(imgFile.filename)[0]
                 let ext = re.exec(imgFile.filename)[1] // extension of file
-                let fileNameWrite = 'img'+last_key+'.'+ext
+                let fileNameWrite = filename+'-'+last_key+'.'+ext
                 let path = '../src/assets/server-images/'+fileNameWrite
                 let readStream = imgFile.createReadStream(imgFile.filename)
-                
                 await storeUpload({readStream, path})
                 
                 const p = {'key': last_key++, 'postTitle': postTitle, 'category': category, 'postSummary': postSummary, 'image': fileNameWrite, 'verdict': verdict+'.png'}
