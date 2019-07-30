@@ -74,9 +74,9 @@ const startServer = async() => {
                 }
                 let imgFile = await image
                 var re = /(?:\.([^.]+))?$/;
-                let filename = re.exec(imgFile.filename)[0]
+                let filename = imgFile.filename 
                 let ext = re.exec(imgFile.filename)[1] // extension of file
-                let fileNameWrite = filename+'-'+last_key+'.'+ext
+                let fileNameWrite = filename+'.'+ext
                 let path = '../src/assets/server-images/'+fileNameWrite
                 let readStream = imgFile.createReadStream(imgFile.filename)
                 await storeUpload({readStream, path})
