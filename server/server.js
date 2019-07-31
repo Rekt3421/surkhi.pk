@@ -80,6 +80,7 @@ const startServer = async() => {
                 let fileNameWrite = filename
                 let path = '../src/assets/server-images/'+fileNameWrite
                 let readStream = imgFile.createReadStream(imgFile.filename)
+                console.log("Uploading file .....")
                 await storeUpload({readStream, path})
                 
                 const p = {'key': last_key++, 'postTitle': postTitle, 'category': category, 'postSummary': postSummary, 'image': fileNameWrite, 'verdict': verdict+'.png'}
