@@ -64,28 +64,30 @@ const startServer = async() => {
 
         Mutation: {
             addPost: async (_, {postTitle, category, postSummary, image, verdict}) => {
-                if (!loaded){
-                    let lastPost = await PostModel.find({}).sort({key:-1}).limit(1)
-                    loaded = !loaded
-                    if (lastPost != 0){
-                        last_key = lastPost[0].key+1
-                        console.log(last_key)
-                    }
-                }
+                //if (!loaded){
+                  //  let lastPost = await PostModel.find({}).sort({key:-1}).limit(1)
+                  //  loaded = !loaded
+                  //  if (lastPost != 0){
+                 //       last_key = lastPost[0].key+1
+                 //       console.log(last_key)
+                  //  }
+              //  }
+               
+               
+               
+                
                 let imgFile = await image
                 var re = /(?:\.([^.]+))?$/;
-               
-                let ext = re.exec(imgFile.filename)[1]
-                let filename = imgFile.filename // extension of file
-                let fileNameWrite = filename
-                let path = '../src/assets/server-images/'+fileNameWrite
+                let ext = re.exec(imgFile.filename)[1] // extension of file
+                let fileNameWrite = 'img'+last_key+'.'+ext
+                let path = './server-images/'+fileNameWrite
                 let readStream = imgFile.createReadStream(imgFile.filename)
                 console.log("Uploading file .....")
                 await storeUpload({readStream, path})
                 
                 const p = {'key': last_key++, 'postTitle': postTitle, 'category': category, 'postSummary': postSummary, 'image': fileNameWrite, 'verdict': verdict+'.png'}
-                const postModel = new PostModel(p)
-                await postModel.save()
+               // const postModel = new PostModel(p)
+               // await postModel.save()
             }
         }
     }
