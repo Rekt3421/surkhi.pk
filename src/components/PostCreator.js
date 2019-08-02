@@ -125,6 +125,8 @@ class PostCreator extends Component {
                                     titleInput.value = ""
                                     summaryInput.value = ""
                                     verdictInput.value = ""
+                                    imageInput.value = ""
+                                    categoryInput.value = []
                             }}>
                                 <div className="row">
                                     <div className="col-sm-6"> 
@@ -177,7 +179,7 @@ class PostCreator extends Component {
                                         <div class="input-group">
                                             <span class="input-group-prepend">
                                                 <span class="btn btn-default btn-file">
-                                                    Browse… <input type="file" id="imgInp"
+                                                    Browse… <input type="file" id="imgInp" name ="image"
                                                     onChange={({target:{files}})=>{
                                                         imageInput = files[0]
                                                         console.log(imageInput)

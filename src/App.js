@@ -17,13 +17,12 @@ import './assets/stylesheets/App.scss';
 import ScrollToTop from './components/Helpers/ScrolltoTop';
 import Services from './components/Services';
 
-
+//const GRAPHCMS_API = 'https://api-useast.graphcms.com/v1/cjwmxe8sf0e7t01eow0zr7kf7/master'
 const app_uri = process.env.REACT_APP_GRAPHQL_URL || 'http://localhost:4000/graphql'
 console.log("The app uri: ", app_uri);
 const uploadLink = createUploadLink({ uri: app_uri });
 const client = new ApolloClient({
     link: ApolloLink.from([uploadLink]),
-    // link: new HttpLink({uri: app_uri}),
     cache: new InMemoryCache()
 });
 
