@@ -4,6 +4,7 @@ const Mongoose = require('mongoose');
 const fs = require('fs');
 const cors = require('cors');
 const PostModel = require('../db/models/Post');
+const cloudinary = require('cloudinary').v2;
 
 const connectToDB = async () =>{
     const dbName = 'heroku_n827ml81';
@@ -17,12 +18,19 @@ const connectToDB = async () =>{
             else
                 console.log("connected to database");
     });
-    
 }
 
-const startServer = async() => {
+const startServer = async () => {
     let last_key = 0
     let loaded = false
+
+    const CLOUDINARY_URL='cloudinary://618933753991472:Mk1sxclfxzyPGbWqZHbJRtrRwKc@surkhiapp'
+
+    cloudinary.config({
+        cloud_name: 'surkhiapp',
+        api_key: '618933753991472',
+        api_secret: 'Mk1sxclfxzyPGbWqZHbJRtrRwKc',
+    })
 
     let typeDefs = gql`
         
@@ -42,6 +50,7 @@ const startServer = async() => {
         }
     `;
 
+<<<<<<< HEAD
     const storeUpload = ({ readStream, path }) =>
        {
         console.log(path ," ", readStream)
@@ -54,6 +63,8 @@ const startServer = async() => {
        
        )};
 
+=======
+>>>>>>> c75e8b0c788bcb50cda36537f76fff3a05eb4aa8
     const resolvers = {
         Query: {
             posts: async () =>{ 
@@ -67,11 +78,12 @@ const startServer = async() => {
                 if (!loaded){
                     let lastPost = await PostModel.find({}).sort({key:-1}).limit(1)
                     loaded = !loaded
-                    if (lastPost != 0){
+                    if (lastPost !== 0){
                         last_key = lastPost[0].key+1
                         console.log(last_key)
                     }
                 }
+<<<<<<< HEAD
                 let imgFile = await image
                 var re = /(?:\.([^.]+))?$/;
                 let filename = re.exec(imgFile.filename)[0]
@@ -83,6 +95,33 @@ const startServer = async() => {
                 await storeUpload({readStream, path})
                 
                 const p = {'key': last_key++, 'postTitle': postTitle, 'category': category, 'postSummary': postSummary, 'image': fileNameWrite, 'verdict': verdict+'.png'}
+=======
+
+                const file = await image // (using apollo 2.0 upload here)
+
+                const uploadToCloudinary = () => {
+                    return new Promise((resolve, reject) => {
+                        const uploadStream = cloudinary.uploader.upload_stream(
+                            {
+                                tags: "test"
+                            },
+                            (error, result) => {
+                                if (result) {
+                                resolve(result);
+                                } else {
+                                reject(error);
+                                }
+                            }
+                        );
+
+                        const stream = file.createReadStream();
+                        stream.pipe(uploadStream);
+                    });
+                };
+
+                const result = await uploadToCloudinary();
+                const p = {'key': last_key++, 'postTitle': postTitle, 'category': category, 'postSummary': postSummary, 'image': result.secure_url, 'verdict': verdict+'.png'}
+>>>>>>> c75e8b0c788bcb50cda36537f76fff3a05eb4aa8
                 const postModel = new PostModel(p)
                 await postModel.save()
             }
@@ -90,28 +129,22 @@ const startServer = async() => {
     }
 
     var app = express();
-    
-    // if (process.env.NODE_ENV === 'production') {
-    //     app.use(express.static('client/build'));
-    //   }
 
     const server = new ApolloServer({
         typeDefs,
         resolvers,
-        engine: {
-            apiKey: "service:hamza121star-5871:kyOXclZ4Iiit4D7BMpLayw",
-        },
-        introspection:true,
-        playground: true
+        playground: true,
+        introspection: true,
     });
 
-
     const graphqlPath = process.env.REACT_APP_GRAPHQL || 'graphql'
+
     server.applyMiddleware({ 
         path: `/${graphqlPath}`,
         app
         
     })
+
     app.use(cors())
     const PORT = process.env.PORT || 4000 ;
     console.log("The Port: ", PORT);
@@ -128,5 +161,4 @@ const dbConnectAndStartServer = async () => {
         process.exit(1);
     }
 };
-    
 dbConnectAndStartServer();
