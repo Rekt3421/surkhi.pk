@@ -3,7 +3,8 @@ const express = require('express');
 const Mongoose = require('mongoose');
 const fs = require('fs');
 const cors = require('cors');
-const PostModel = require('./models/Post');
+const PostModel = require('../db/models/Post');
+const cloudinary = require('cloudinary').v2;
 
 const connectToDB = async () =>{
     const dbName = 'heroku_n827ml81';
@@ -17,12 +18,19 @@ const connectToDB = async () =>{
             else
                 console.log("connected to database");
     });
-    
 }
 
-const startServer = async() => {
+const startServer = async () => {
     let last_key = 0
     let loaded = false
+
+    const CLOUDINARY_URL='cloudinary://618933753991472:Mk1sxclfxzyPGbWqZHbJRtrRwKc@surkhiapp'
+
+    cloudinary.config({
+        cloud_name: 'surkhiapp',
+        api_key: '618933753991472',
+        api_secret: 'Mk1sxclfxzyPGbWqZHbJRtrRwKc',
+    })
 
     let typeDefs = gql`
         
@@ -42,18 +50,6 @@ const startServer = async() => {
         }
     `;
 
-    const storeUpload = ({ readStream, path }) =>
-      {
-        console.log(path ," ", readStream)
-        new Promise((resolve, reject) =>
-            readStream
-            .pipe(fs.createWriteStream(path))
-            .on("finish", () => resolve())
-            .on("error", reject)
-                 
-       
-       )};
-
     const resolvers = {
         Query: {
             posts: async () =>{ 
@@ -64,7 +60,6 @@ const startServer = async() => {
 
         Mutation: {
             addPost: async (_, {postTitle, category, postSummary, image, verdict}) => {
-                
                 if (!loaded){
                     let lastPost = await PostModel.find({}).sort({key:-1}).limit(1)
                     loaded = !loaded
@@ -73,52 +68,56 @@ const startServer = async() => {
                         console.log(last_key)
                     }
                 }
-               
-               
-               
-                
-                let imgFile = await image
-                var re = /(?:\.([^.]+))?$/;
-                let ext = re.exec(imgFile.filename)[1] // extension of file
-                let fileNameWrite = 'img'+last_key+'.'+ext
-                let path = '../src/assets/server-images/'+fileNameWrite
-                let readStream = imgFile.createReadStream(imgFile.filename)
-                console.log("Uploading file .....")
-                await storeUpload({readStream, path})
-                
-                const p = {'key': last_key++, 'postTitle': postTitle, 'category': category, 'postSummary': postSummary, 'image': fileNameWrite, 'verdict': verdict+'.png'}
 
-               const postModel = new PostModel(p)
-               await postModel.save()
+                const file = await image // (using apollo 2.0 upload here)
+
+                const uploadToCloudinary = () => {
+                    return new Promise((resolve, reject) => {
+                        const uploadStream = cloudinary.uploader.upload_stream(
+                            {
+                                tags: "test"
+                            },
+                            (error, result) => {
+                                if (result) {
+                                resolve(result);
+                                } else {
+                                reject(error);
+                                }
+                            }
+                        );
+
+                        const stream = file.createReadStream();
+                        stream.pipe(uploadStream);
+                    });
+                };
+
+                const result = await uploadToCloudinary();
+                const p = {'key': last_key++, 'postTitle': postTitle, 'category': category, 'postSummary': postSummary, 'image': result.secure_url, 'verdict': verdict+'.png'}
+                const postModel = new PostModel(p)
+                await postModel.save()
             }
         }
     }
 
     var app = express();
-    
-    // if (process.env.NODE_ENV === 'production') {
-    //     app.use(express.static('client/build'));
-    //   }
 
     const server = new ApolloServer({
         typeDefs,
         resolvers,
-        engine: {
-            apiKey: "service:hamza121star-5871:kyOXclZ4Iiit4D7BMpLayw",
-        },
-        introspection:true,
-        playground: true
+        playground: true,
+        introspection: true,
     });
 
-
     const graphqlPath = process.env.REACT_APP_GRAPHQL || 'graphql'
+
     server.applyMiddleware({ 
         path: `/${graphqlPath}`,
         app
         
     })
+
     app.use(cors())
-    const PORT = process.env.PORT || 4000;
+    const PORT = process.env.PORT || 4000 ;
     console.log("The Port: ", PORT);
     app.listen(PORT, ()=> {console.log("App started")})
 }
@@ -133,5 +132,4 @@ const dbConnectAndStartServer = async () => {
         process.exit(1);
     }
 };
-    
 dbConnectAndStartServer();
